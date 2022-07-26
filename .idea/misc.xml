@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_basket.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_detail.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_home.xml" value="0.17028985507246377" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
