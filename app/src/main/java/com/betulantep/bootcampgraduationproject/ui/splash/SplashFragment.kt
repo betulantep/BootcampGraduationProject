@@ -1,21 +1,18 @@
 package com.betulantep.bootcampgraduationproject.ui.splash
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
-import com.betulantep.bootcampgraduationproject.ui.welcome.WelcomeFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: SplashViewModel
@@ -36,6 +33,6 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.authControl(auth,requireView())
+        viewModel.showOnBoarding(view,auth)
     }
 }

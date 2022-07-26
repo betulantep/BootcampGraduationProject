@@ -9,7 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentWelcomeBinding
+import com.betulantep.bootcampgraduationproject.utils.AppPref
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -25,7 +27,7 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             delay(1000)
-            Navigation.actionFragment(requireView(),WelcomeFragmentDirections.actionWelcomeFragmentToHomeFragment())
+            Navigation.actionFragment(view, WelcomeFragmentDirections.actionWelcomeFragmentToHomeFragment())
         }
     }
 }
