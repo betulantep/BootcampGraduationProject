@@ -7,6 +7,12 @@
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_basket.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_detail.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_home.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_onboarding.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_sign_in.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_sign_up.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_splash.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_user.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_welcome.xml" value="0.17028985507246377" />
       </map>
     </option>
   </component>
