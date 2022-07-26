@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentOnboardingBinding
+import com.betulantep.bootcampgraduationproject.utils.actionFragment
 
 class OnBoardingFragment : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
@@ -19,11 +20,11 @@ class OnBoardingFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_onboarding, container, false)
 
         binding.buttonIn.setOnClickListener {
-            Navigation.findNavController(it).navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInFragment())
+            Navigation.actionFragment(it,OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInFragment())
         }
 
         binding.buttonUp.setOnClickListener {
-            Navigation.findNavController(it).navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSignUpFragment())
+            Navigation.actionFragment(it,OnBoardingFragmentDirections.actionOnBoardingFragmentToSignUpFragment())
         }
         return binding.root
     }

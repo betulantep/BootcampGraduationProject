@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
@@ -17,28 +18,24 @@ import kotlinx.coroutines.launch
 
 class SplashFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var viewModel: SplashViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val tempViewModel : SplashViewModel by viewModels()
+        viewModel = tempViewModel
         auth = Firebase.auth
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch {
-            delay(1000)
-            val currentUser = auth.currentUser
-            if(currentUser != null){
-                Navigation.findNavController(requireView()).navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
-            }else{
-                Navigation.findNavController(requireView()).navigate(SplashFragmentDirections.actionSplashFragmentToOnBoardingFragment())
-            }
-        }
+        viewModel.authControl(auth,requireView())
     }
 }

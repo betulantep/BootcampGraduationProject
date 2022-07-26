@@ -10,6 +10,7 @@ import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
 import com.betulantep.bootcampgraduationproject.databinding.FragmentUserBinding
 import com.betulantep.bootcampgraduationproject.ui.home.HomeFragmentDirections
+import com.betulantep.bootcampgraduationproject.utils.actionFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -30,7 +31,7 @@ class UserFragment : Fragment() {
 
         binding.buttonCikisYap.setOnClickListener {
             auth.signOut()
-            Navigation.findNavController(it).navigate(UserFragmentDirections.actionUserFragmentToSignInFragment())
+            Navigation.actionFragment(it,UserFragmentDirections.actionUserFragmentToSignInFragment())
         }
         return binding.root
         //return inflater.inflate(R.layout.fragment_user, container, false)
