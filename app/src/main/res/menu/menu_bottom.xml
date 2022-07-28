@@ -12,5 +12,9 @@
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="Favorite"
         app:showAsAction="always" />
-
+    <item
+        android:id="@+id/action_disabled"
+        android:enabled="false"
+        android:title=""
+        app:showAsAction="always" />
 </menu>
