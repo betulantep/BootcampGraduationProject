@@ -5,6 +5,8 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.utils.AppPref
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
 import com.google.firebase.auth.FirebaseAuth

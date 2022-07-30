@@ -42,7 +42,7 @@
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
-            android:backgroundTint="#FCD240"
+            android:backgroundTint="@color/primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottomAppBar"
-            app:backgroundTint="#FFC107"
+            app:backgroundTint="@color/primaryOrange"
             app:srcCompat="@drawable/ic_baseline_shopping_basket_24"
             android:contentDescription="My Basket" />
 

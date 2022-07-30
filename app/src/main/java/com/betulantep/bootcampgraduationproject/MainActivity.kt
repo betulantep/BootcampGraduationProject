@@ -1,16 +1,12 @@
 package com.betulantep.bootcampgraduationproject
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.betulantep.bootcampgraduationproject.databinding.ActivityMainBinding
+import com.betulantep.bootcampgraduationproject.utils.updateStatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,38 +16,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showNavigationViewControl()
+        showNavigationViewAndStatusBarColorControl()
     }
 
-    private fun showNavigationViewControl() {
+    private fun showNavigationViewAndStatusBarColorControl() {
         binding.bottomNavView.background = null
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragmentActivityMain) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragmentActivityMain) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.splashFragment,
-                R.id.onBoardingFragment,
-                R.id.signInFragment,
-                R.id.signUpFragment,
-                R.id.welcomeFragment,
-                R.id.homeFragment,
-                R.id.userFragment,
-            )
-        )
         val showBottomNavigationIds = listOf(
             R.id.homeFragment,
             R.id.userFragment
         )
+
+        val colorPrimaryStatusBarIds = listOf(
+            R.id.splashFragment,
+            R.id.onBoardingFragment
+        )
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            Log.e("Alt menu", destination.id.toString())
             if (showBottomNavigationIds.contains(destination.id)) {
                 binding.navigationViewCoordinator.visibility = View.VISIBLE
             } else {
                 binding.navigationViewCoordinator.visibility = View.GONE
             }
+
+            if (colorPrimaryStatusBarIds.contains(destination.id)) {
+                updateStatusBarColor(R.color.primary)
+            } else {
+                updateStatusBarColor(R.color.primaryLight)
+            }
         }
-        NavigationUI.setupWithNavController(binding.bottomNavView,navController)
+        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
     }
 }
