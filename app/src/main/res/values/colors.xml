@@ -13,6 +13,7 @@
     <color name="primaryLight">#e8eaf6</color>
     <color name="primaryGreen">#267365</color>
     <color name="primaryOrange">#fec240</color>
+    <color name="red">#b00020</color>
 
     <color name="black_100">#1C1C1C</color>
 </resources>

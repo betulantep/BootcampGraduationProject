@@ -5,11 +5,15 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -40,12 +44,39 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSignInBinding.inflate(layoutInflater)
-        //return inflater.inflate(R.layout.fragment_sign_in, container, false)
-        binding.buttonLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
-            viewModel.signIn(auth,it,email,password)
-        }
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_sign_in, container, false)
+        binding.signInFragment = this
+        binding.viewModel = viewModel
+        passwordFocusListener()
         return binding.root
+    }
+
+    fun signInClicked(view: View,email:String,password:String){
+        val emailHelperText = binding.signInTextFieldEmail.helperText
+        val passwordHelperText = binding.signInTextFieldPassword.helperText
+        if(emailHelperText == null && passwordHelperText == null){
+            viewModel.signIn(auth,view,email,password)
+        }else{
+            Toast.makeText(requireContext(),"Required Email and Password",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    private fun passwordFocusListener(){
+       binding.etSignInPassword.addTextChangedListener(object : TextWatcher {
+           override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+           override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+           override fun afterTextChanged(p0: Editable?) {
+               binding.signInTextFieldPassword.helperText = validPassword()
+           }
+       })
+    }
+
+    private fun validPassword(): String? {
+        val password = binding.etSignInPassword.text.toString()
+        if(password.isEmpty()){
+            return "Required Password"
+        }
+        return null
     }
 }

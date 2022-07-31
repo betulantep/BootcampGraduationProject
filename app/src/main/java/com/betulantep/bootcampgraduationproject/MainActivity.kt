@@ -33,7 +33,9 @@ class MainActivity : AppCompatActivity() {
 
         val colorPrimaryStatusBarIds = listOf(
             R.id.splashFragment,
-            R.id.onBoardingFragment
+            R.id.onBoardingFragment,
+            R.id.signInFragment,
+            R.id.signUpFragment
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (showBottomNavigationIds.contains(destination.id)) {

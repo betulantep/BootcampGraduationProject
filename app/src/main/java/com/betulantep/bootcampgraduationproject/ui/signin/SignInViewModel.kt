@@ -10,6 +10,7 @@ import com.betulantep.bootcampgraduationproject.utils.actionFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInViewModel: ViewModel() {
+
     fun signIn(auth: FirebaseAuth,view:View, email:String,password:String){
         auth.signInWithEmailAndPassword(email,password)
             .addOnSuccessListener {
@@ -18,5 +19,8 @@ class SignInViewModel: ViewModel() {
             .addOnFailureListener {
                 Toast.makeText(view.context,"Hatalı giriş", Toast.LENGTH_SHORT).show()
             }
+    }
+    fun goToSignUp(view: View){
+        Navigation.actionFragment(view,SignInFragmentDirections.actionSignInFragmentToSignUpFragment())
     }
 }

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentOnboardingBinding
@@ -12,20 +14,13 @@ import com.betulantep.bootcampgraduationproject.utils.actionFragment
 
 class OnBoardingFragment : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
+    private val viewModel : OnBoardingViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOnboardingBinding.inflate(layoutInflater)
-        //return inflater.inflate(R.layout.fragment_onboarding, container, false)
-
-        binding.buttonIn.setOnClickListener {
-            Navigation.actionFragment(it,OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInFragment())
-        }
-
-        binding.buttonUp.setOnClickListener {
-            Navigation.actionFragment(it,OnBoardingFragmentDirections.actionOnBoardingFragmentToSignUpFragment())
-        }
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_onboarding, container, false)
+        binding.viewModel = viewModel
         return binding.root
     }
 }
