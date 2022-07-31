@@ -2,8 +2,16 @@ package com.betulantep.bootcampgraduationproject.ui.bindingadapter
 
 import android.util.Patterns
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import coil.load
 import com.google.android.material.textfield.TextInputLayout
+
+@BindingAdapter("app:load_image")
+fun loadImage(imageView: ImageView,foodImageName: String){
+    val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/$foodImageName"
+    imageView.load(imageUrl)
+}
 
 @BindingAdapter("app:textChangedEmailListener")
 fun textChangedEmailListener(et: EditText, textInputLayout: TextInputLayout){

@@ -1,13 +1,17 @@
 package com.betulantep.bootcampgraduationproject.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
+import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,13 +22,18 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        Log.e("asd","asasfaf")
+        viewModel.foodsList.observe(viewLifecycleOwner){
+            Log.e("asd","aaaa")
+            val adapter = FoodAdapter(it)
+            Log.e("asd","bbbbb")
+            binding.foodAdapter = adapter
+        }
         binding.buttonKullanici.setOnClickListener {
             Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToUserFragment())
         }
         return binding.root
-        //return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

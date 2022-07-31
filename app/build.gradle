@@ -80,4 +80,7 @@ dependencies {
 
     //lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
+
+    // Coil
+    implementation("io.coil-kt:coil:1.4.0")
 }
