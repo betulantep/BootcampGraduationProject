@@ -21,4 +21,5 @@
     <color name="gray_image_bg">#E6E6E6</color>
     <color name="text_blue_dark">#171E48</color>
     <color name="navDefaultColor">#9896A8</color>
+    <color name="mediumGray">#D1D1D1</color>
 </resources>

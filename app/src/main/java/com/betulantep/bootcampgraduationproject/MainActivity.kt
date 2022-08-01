@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         val showBottomNavigationIds = listOf(
             R.id.homeFragment,
-            R.id.userFragment
+            R.id.userFragment,
+            R.id.detailFragment
         )
 
         val colorPrimaryStatusBarIds = listOf(

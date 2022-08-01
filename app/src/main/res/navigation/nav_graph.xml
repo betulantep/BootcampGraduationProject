@@ -86,4 +86,9 @@
             android:id="@+id/action_userFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.betulantep.bootcampgraduationproject.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

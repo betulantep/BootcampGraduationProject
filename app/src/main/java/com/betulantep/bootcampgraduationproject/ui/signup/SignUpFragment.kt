@@ -38,6 +38,7 @@ class SignUpFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_sign_up, container, false)
         binding.signUpFragment = this
+        binding.viewModel = viewModel
         confirmPasswordFocusListener()
         return binding.root
     }

@@ -38,6 +38,29 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFrameLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchTextFieldHome">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/placeholder_row_layout_home" />
+
+                <include layout="@layout/placeholder_row_layout_home" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFoodHome"
             android:layout_width="0dp"
@@ -45,8 +68,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:adapter="@{foodAdapter}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            android:adapter="@{foodAdapter}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

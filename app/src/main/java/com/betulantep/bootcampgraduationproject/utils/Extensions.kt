@@ -8,6 +8,9 @@ import android.view.WindowManager
 import android.widget.EditText
 import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
@@ -23,4 +26,5 @@ fun Navigation.actionFragment(view: View,navDirections: NavDirections){
 fun Activity.updateStatusBarColor(colorValue: Int) {
     window.statusBarColor = resources.getColor(colorValue)
 }
+
 

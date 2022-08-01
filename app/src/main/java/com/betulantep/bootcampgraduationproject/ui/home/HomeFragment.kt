@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
@@ -26,42 +25,79 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        initView()
+
+        showShimmerEffect()
+        observeLiveData()
+        searchFood()
+
+        binding.rvFoodHome.addItemDecoration(RecyclerItemDecoration())
+
         return binding.root
     }
-    private fun initView(){
-        observeFoodList()
-        searchFood()
-        binding.rvFoodHome.addItemDecoration(RecyclerItemDecoration())
-    }
 
-    private fun observeFoodList(){
+    private fun observeLiveData(){
         viewModel.foodsList.observe(viewLifecycleOwner){
             val adapter = FoodAdapter(it)
             binding.foodAdapter = adapter
+            Log.e("asd","food list")
         }
+        viewModel.foodLoading.observe(viewLifecycleOwner){
+            if(it){
+                showShimmerEffect()
+            }else{
+                hideShimmerEffect()
+            }
+        }
+
     }
 
     private fun searchFood(){
-        binding.etSearchHome.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.searchFood(p0.toString())
+        binding.etSearchHome.setOnFocusChangeListener { _, focused ->
+            if(focused){
+                binding.etSearchHome.addTextChangedListener(object: TextWatcher{
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        viewModel.searchFood(p0.toString())
+                    }
+                    override fun afterTextChanged(p0: Editable?) {}
+                })
             }
-            override fun afterTextChanged(p0: Editable?) {}
-        })
+        }
 
+
+    }
+
+    private fun showShimmerEffect() = with(binding) {
+        shimmerFrameLayout.visibility = View.VISIBLE
+        shimmerFrameLayout.startShimmer()
+        rvFoodHome.visibility = View.GONE
+    }
+
+    private fun hideShimmerEffect() = with(binding) {
+        shimmerFrameLayout.stopShimmer()
+        shimmerFrameLayout.visibility = View.GONE
+        rvFoodHome.visibility = View.VISIBLE
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel : HomeViewModel by viewModels()
         viewModel = tempViewModel
+        Log.e("asd","onCreate")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.putOnBoarding()
+        Log.e("asd","onViewCreated")
+
+
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.e("asd","onDestroy")
     }
 
 }
