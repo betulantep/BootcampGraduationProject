@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface FoodDao {
     //http://kasimadalan.pe.hu/yemekler/tumYemekleriGetir.php
-
+    //http://kasimadalan.pe.hu/yemekler/sepettekiYemekleriGetir.php
     @GET("yemekler/tumYemekleriGetir.php")
     fun getAllFood() : Call<FoodResponse>
 }

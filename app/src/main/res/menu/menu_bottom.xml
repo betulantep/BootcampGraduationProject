@@ -8,9 +8,14 @@
         android:title="Home"
         app:showAsAction="always" />
     <item
-        android:id="@+id/userFragment"
+        android:id="@+id/welcomeFragment"
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="Favorite"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/userFragment"
+        android:icon="@drawable/ic_user"
+        android:title="User"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_disabled"

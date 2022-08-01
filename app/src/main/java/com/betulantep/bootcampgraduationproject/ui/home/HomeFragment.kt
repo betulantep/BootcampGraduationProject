@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
+import com.betulantep.bootcampgraduationproject.utils.RecyclerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,16 +24,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        Log.e("asd","asasfaf")
+
         viewModel.foodsList.observe(viewLifecycleOwner){
-            Log.e("asd","aaaa")
             val adapter = FoodAdapter(it)
-            Log.e("asd","bbbbb")
             binding.foodAdapter = adapter
         }
-        binding.buttonKullanici.setOnClickListener {
+        binding.rvFoodHome.addItemDecoration(RecyclerItemDecoration())
+       /* binding.buttonKullanici.setOnClickListener {
             Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToUserFragment())
-        }
+        }*/
         return binding.root
     }
 

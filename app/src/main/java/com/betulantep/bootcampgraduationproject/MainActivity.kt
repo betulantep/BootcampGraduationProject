@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             if (colorPrimaryStatusBarIds.contains(destination.id)) {
                 updateStatusBarColor(R.color.primary)
             } else {
-                updateStatusBarColor(R.color.primaryLight)
+                updateStatusBarColor(R.color.primaryDark)
             }
         }
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
