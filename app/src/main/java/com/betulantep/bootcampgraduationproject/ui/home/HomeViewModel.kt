@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(var appPref: AppPref, var foodRepo:FoodRepository): ViewModel() {
+class HomeViewModel @Inject constructor(var appPref: AppPref, var foodRepo: FoodRepository) :
+    ViewModel() {
 
     var foodsList = MutableLiveData<List<Food>>()
 
@@ -19,11 +20,16 @@ class HomeViewModel @Inject constructor(var appPref: AppPref, var foodRepo:FoodR
         loadFoods()
         foodsList = foodRepo.getFoods()
     }
-    fun loadFoods(){
+
+    fun loadFoods() {
         foodRepo.getAllFoods()
     }
 
-    fun putOnBoarding(){
+    fun searchFood(searchWord: String) {
+        foodRepo.searchFood(searchWord)
+    }
+
+    fun putOnBoarding() {
         viewModelScope.launch {
             appPref.putOnBoardingShow(false)
         }

@@ -1,5 +1,6 @@
 package com.betulantep.bootcampgraduationproject.data.repo
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.data.entity.FoodResponse
@@ -27,4 +28,23 @@ class FoodRepository @Inject constructor(var foodDao: FoodDao) {
 
         })
     }
+    fun searchFood(searchWord:String){
+
+        foodDao.getAllFood().enqueue(object : Callback<FoodResponse>{
+            override fun onResponse(call: Call<FoodResponse>?, response: Response<FoodResponse>) {
+                val list = response.body().foods
+                val searchList = ArrayList<Food>()
+                for(food in list){
+                    if(food.foodName.lowercase().contains(searchWord.lowercase())){
+                        searchList.add(food)
+                    }
+                }
+                foodsList.value = searchList
+            }
+
+            override fun onFailure(call: Call<FoodResponse>?, t: Throwable?) {}
+
+        })
+    }
+
 }

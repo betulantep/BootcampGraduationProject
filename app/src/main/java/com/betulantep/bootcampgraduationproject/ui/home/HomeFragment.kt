@@ -1,6 +1,8 @@
 package com.betulantep.bootcampgraduationproject.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -24,16 +26,31 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        initView()
+        return binding.root
+    }
+    private fun initView(){
+        observeFoodList()
+        searchFood()
+        binding.rvFoodHome.addItemDecoration(RecyclerItemDecoration())
+    }
 
+    private fun observeFoodList(){
         viewModel.foodsList.observe(viewLifecycleOwner){
             val adapter = FoodAdapter(it)
             binding.foodAdapter = adapter
         }
-        binding.rvFoodHome.addItemDecoration(RecyclerItemDecoration())
-       /* binding.buttonKullanici.setOnClickListener {
-            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToUserFragment())
-        }*/
-        return binding.root
+    }
+
+    private fun searchFood(){
+        binding.etSearchHome.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.searchFood(p0.toString())
+            }
+            override fun afterTextChanged(p0: Editable?) {}
+        })
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,4 +63,5 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.putOnBoarding()
     }
+
 }

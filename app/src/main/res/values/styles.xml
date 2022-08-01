@@ -13,6 +13,18 @@
         <item name="helperText">Required</item>
         <item name="helperTextTextColor">@color/red</item>
     </style>
+
+    <style name="textInputLayoutStyleSearch" parent="">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeColor">@color/primaryDark</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextColor">@color/black</item>
+    </style>
     <style name="textInputEditTextStyle" parent="">
         <item name="android:padding">16dp</item>
         <item name="android:textColor">@color/black</item>
