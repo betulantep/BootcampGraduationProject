@@ -7,13 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavArgs
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentDetailBinding
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
 
 class DetailFragment : Fragment() {
     private lateinit var binding : FragmentDetailBinding
+    private val navArgs: DetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,6 +25,7 @@ class DetailFragment : Fragment() {
         binding.topAppBar.setNavigationOnClickListener {
             Navigation.actionFragment(it,DetailFragmentDirections.actionDetailFragmentToHomeFragment())
         }
+        binding.food = navArgs.food
         //return inflater.inflate(R.layout.fragment_detail, container, false)
         return binding.root
     }

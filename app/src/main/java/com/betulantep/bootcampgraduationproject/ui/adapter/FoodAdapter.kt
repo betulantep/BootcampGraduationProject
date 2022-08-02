@@ -25,9 +25,10 @@ class FoodAdapter(var foodList: List<Food>): RecyclerView.Adapter<FoodAdapter.Fo
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) = with(holder) {
-        bind(foodList[position])
+        val food = foodList[position]
+        bind(food)
         binding.cardviewFoodHome.setOnClickListener {
-            Navigation.actionFragment(it,HomeFragmentDirections.actionHomeFragmentToDetailFragment())
+            Navigation.actionFragment(it,HomeFragmentDirections.actionHomeFragmentToDetailFragment(food = food))
         }
     }
 

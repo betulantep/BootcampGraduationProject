@@ -121,6 +121,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/detailFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="food"
+            app:argType="com.betulantep.bootcampgraduationproject.data.entity.Food" />
     </fragment>
     <fragment
         android:id="@+id/basketFragment"

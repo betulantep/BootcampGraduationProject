@@ -30,8 +30,6 @@ class HomeFragment : Fragment() {
         observeLiveData()
         searchFood()
 
-
-
         binding.rvFoodHome.addItemDecoration(RecyclerItemDecoration())
 
         return binding.root

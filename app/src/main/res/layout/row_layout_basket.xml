@@ -1,116 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardviewBasket"
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewBasket"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/ivBasketFoodImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/sutlac" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvBasketFoodName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_extrabold"
-                android:text="Sütlaç"
-                android:textColor="@color/text_blue_dark"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/ivBasketFoodImage"
-                app:layout_constraintTop_toTopOf="@+id/ivBasketFoodImage" />
-
-            <TextView
-                android:id="@+id/tvBasketFoodPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_extrabold"
-                android:text="₺10"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvBasketFoodName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvBasketFoodName" />
-
-            <LinearLayout
-                android:id="@+id/linearAddDeleteDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/ivBasketFoodImage"
-                app:layout_constraintStart_toStartOf="@+id/tvBasketFoodName"
-                app:layout_constraintTop_toBottomOf="@+id/tvBasketFoodName">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnDetailDelete"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_button_basket_small"
-                    android:foreground="@drawable/ic_minus"
-                    android:foregroundGravity="center"
-                    android:foregroundTint="@color/white" />
+                <ImageView
+                    android:id="@+id/ivBasketFoodImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sutlac" />
 
                 <TextView
-                    android:id="@+id/tvBasketQuantity"
-                    android:layout_width="30dp"
+                    android:id="@+id/tvBasketFoodName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppins_extrabold"
-                    android:gravity="center"
-                    android:text="8"
-                    android:textAlignment="center"
+                    android:text="Sütlaç"
                     android:textColor="@color/text_blue_dark"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/ivBasketFoodImage"
+                    app:layout_constraintTop_toTopOf="@+id/ivBasketFoodImage" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnDetailAdd"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_button_basket_small"
-                    android:foreground="@drawable/ic_plus"
-                    android:foregroundGravity="center"
-                    android:foregroundTint="@color/white" />
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/tvBasketFoodPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:text="₺10"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBasketFoodName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvBasketFoodName" />
 
-            <TextView
-                android:id="@+id/tvBasketTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_extrabold"
-                android:text="₺245"
-                android:textColor="@color/text_blue_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/linearAddDeleteDetail"
-                app:layout_constraintEnd_toEndOf="@+id/tvBasketFoodPrice"
-                app:layout_constraintTop_toTopOf="@+id/linearAddDeleteDetail" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/linearAddDeleteDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivBasketFoodImage"
+                    app:layout_constraintStart_toStartOf="@+id/tvBasketFoodName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBasketFoodName">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnDetailDelete"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_button_basket_small"
+                        android:foreground="@drawable/ic_minus"
+                        android:foregroundGravity="center"
+                        android:foregroundTint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvBasketQuantity"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_extrabold"
+                        android:gravity="center"
+                        android:text="8"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_blue_dark"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnDetailAdd"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_button_basket_small"
+                        android:foreground="@drawable/ic_plus"
+                        android:foregroundGravity="center"
+                        android:foregroundTint="@color/white" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvBasketTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:text="₺245"
+                    android:textColor="@color/text_blue_dark"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearAddDeleteDetail"
+                    app:layout_constraintEnd_toEndOf="@+id/tvBasketFoodPrice"
+                    app:layout_constraintTop_toTopOf="@+id/linearAddDeleteDetail" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
