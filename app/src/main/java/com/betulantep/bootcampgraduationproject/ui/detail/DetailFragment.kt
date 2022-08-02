@@ -1,13 +1,12 @@
 package com.betulantep.bootcampgraduationproject.ui.detail
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavArgs
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.betulantep.bootcampgraduationproject.R
@@ -17,16 +16,46 @@ import com.betulantep.bootcampgraduationproject.utils.actionFragment
 class DetailFragment : Fragment() {
     private lateinit var binding : FragmentDetailBinding
     private val navArgs: DetailFragmentArgs by navArgs()
+    private lateinit var viewModel: DetailViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(layoutInflater)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
         binding.topAppBar.setNavigationOnClickListener {
             Navigation.actionFragment(it,DetailFragmentDirections.actionDetailFragmentToHomeFragment())
         }
+
         binding.food = navArgs.food
-        //return inflater.inflate(R.layout.fragment_detail, container, false)
+        binding.viewModel = viewModel
+        binding.detailFragment = this
+        observe()
+
         return binding.root
+    }
+
+    private fun observe(){
+        viewModel.quantity.observe(viewLifecycleOwner){
+            binding.quantityResult = it.toString()
+        }
+        viewModel.subTotal.observe(viewLifecycleOwner){
+            binding.subTotalResult = "₺$it"
+        }
+    }
+
+    fun clickedAddToCart(view: View,viewLinear: View){
+        viewModel.clickedAddToCart(view,viewLinear,navArgs.food.foodPrice)
+    }
+    fun clickedAdd(view: View){
+        viewModel.clickedAdd(view,navArgs.food.foodPrice)
+    }
+    fun clickedDelete(view: View,viewLinear: View,viewCart:View){
+        viewModel.clickedDelete(view,viewLinear,viewCart,navArgs.food.foodPrice)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : DetailViewModel by viewModels()
+        viewModel = tempViewModel
     }
 }

@@ -5,6 +5,20 @@
 
     <data>
         <variable
+            name="quantityResult"
+            type="String" />
+        <variable
+            name="subTotalResult"
+            type="String" />
+        <variable
+            name="viewModel"
+            type="com.betulantep.bootcampgraduationproject.ui.detail.DetailViewModel" />
+
+        <variable
+            name="detailFragment"
+            type="com.betulantep.bootcampgraduationproject.ui.detail.DetailFragment" />
+
+        <variable
             name="food"
             type="com.betulantep.bootcampgraduationproject.data.entity.Food" />
     </data>
@@ -59,6 +73,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_button_detail_cart"
             android:fontFamily="@font/poppins"
+            android:onClick="@{()->detailFragment.clickedAddToCart(btnDetailAddToCart,linearAddDeleteDetail)}"
             android:text="@string/sepete_ekle"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -73,13 +88,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins"
-            android:text="₺264"
             android:textAlignment="center"
+            android:text="@{subTotalResult}"
             android:textColor="@color/black_100"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearAddDeleteDetail"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -147,8 +163,8 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_marginEnd="1dp"
-            android:visibility="invisible"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvDetailSubTotal">
@@ -161,16 +177,18 @@
                 android:background="@drawable/bg_button_detail_cart_left"
                 android:foreground="@drawable/ic_minus"
                 android:foregroundGravity="center"
-                android:foregroundTint="@color/white" />
+                android:foregroundTint="@color/white"
+                android:onClick="@{()->detailFragment.clickedDelete(btnDetailDelete,linearAddDeleteDetail,btnDetailAddToCart)}" />
+
 
             <TextView
-                android:id="@+id/tvBasketQuantity"
+                android:id="@+id/tvDetailQuantity"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_extrabold"
+                android:text="@{quantityResult}"
                 android:gravity="center"
-                android:text="8"
                 android:textAlignment="center"
                 android:textColor="@color/text_blue_dark"
                 android:textSize="30sp" />
@@ -183,7 +201,11 @@
                 android:background="@drawable/bg_button_detail_cart_right"
                 android:foreground="@drawable/ic_plus"
                 android:foregroundGravity="center"
-                android:foregroundTint="@color/white" />
+                android:foregroundTint="@color/white"
+                android:onClick="@{()->detailFragment.clickedAdd(btnDetailAdd)}" />
+
+
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
