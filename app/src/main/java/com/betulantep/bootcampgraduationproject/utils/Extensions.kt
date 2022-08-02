@@ -22,6 +22,9 @@ import com.google.android.material.textfield.TextInputLayout
 fun Navigation.actionFragment(view: View,navDirections: NavDirections){
     findNavController(view).navigate(navDirections)
 }
+fun Navigation.actionFragment(view: View,id:Int){
+    findNavController(view).navigate(id)
+}
 
 fun Activity.updateStatusBarColor(colorValue: Int) {
     window.statusBarColor = resources.getColor(colorValue)

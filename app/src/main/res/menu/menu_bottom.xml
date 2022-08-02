@@ -17,9 +17,11 @@
         android:icon="@drawable/ic_user"
         android:title="User"
         app:showAsAction="always" />
+
     <item
         android:id="@+id/action_disabled"
         android:enabled="false"
         android:title=""
         app:showAsAction="always" />
+
 </menu>

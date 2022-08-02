@@ -1,11 +1,15 @@
 package com.betulantep.bootcampgraduationproject
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.betulantep.bootcampgraduationproject.databinding.ActivityMainBinding
+import com.betulantep.bootcampgraduationproject.ui.home.HomeFragmentDirections
+import com.betulantep.bootcampgraduationproject.utils.actionFragment
 import com.betulantep.bootcampgraduationproject.utils.updateStatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,10 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        showNavigationViewAndStatusBarColorControl()
-    }
 
-    private fun showNavigationViewAndStatusBarColorControl() {
         binding.bottomNavView.background = null
 
         val navHostFragment =
@@ -28,8 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         val showBottomNavigationIds = listOf(
             R.id.homeFragment,
-            R.id.userFragment,
-            R.id.detailFragment
+            R.id.userFragment
         )
 
         val colorPrimaryStatusBarIds = listOf(
@@ -43,6 +43,13 @@ class MainActivity : AppCompatActivity() {
                 binding.navigationViewCoordinator.visibility = View.VISIBLE
             } else {
                 binding.navigationViewCoordinator.visibility = View.GONE
+            }
+
+            binding.fab.setOnClickListener {
+                Navigation.setViewNavController(it,navController)
+                if(destination.id == R.id.homeFragment){
+                    Navigation.actionFragment(it,R.id.action_homeFragment_to_basketFragment)
+                }
             }
 
             if (colorPrimaryStatusBarIds.contains(destination.id)) {
