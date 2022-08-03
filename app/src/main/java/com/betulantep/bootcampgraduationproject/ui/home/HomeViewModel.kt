@@ -39,6 +39,11 @@ class HomeViewModel @Inject constructor(
             appPref.putOnBoardingShow(false)
         }
     }
+   fun putUsername(username:String) {
+        viewModelScope.launch {
+            appPref.putUsername(username)
+        }
+    }
 
 
 }

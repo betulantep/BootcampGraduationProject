@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             binding.fab.setOnClickListener {
                 Navigation.setViewNavController(it,navController)
                 if(destination.id == R.id.homeFragment){
-                    Navigation.actionFragment(it,R.id.action_homeFragment_to_basketFragment)
+                    Navigation.actionFragment(it,R.id.basketFragment)
                 }
             }
 

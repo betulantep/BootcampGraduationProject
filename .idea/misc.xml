@@ -14,6 +14,7 @@
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/home_row_bottom_shape.xml" value="0.183" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/home_row_shape.xml" value="0.183" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.183" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.183" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/ic_baseline_directions_bike_24.xml" value="0.183" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/ic_basket.xml" value="0.183" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/drawable/ic_close.xml" value="0.183" />
@@ -25,7 +26,7 @@
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/food_row.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/food_row_layout.xml" value="0.67" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_basket.xml" value="0.2" />
-        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_detail.xml" value="0.33" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_detail.xml" value="0.22" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_onboarding.xml" value="0.22" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_sign_in.xml" value="0.22" />
@@ -34,7 +35,7 @@
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_user.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/fragment_welcome.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/placeholder_row_layout_home.xml" value="0.33" />
-        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/row_layout_basket.xml" value="0.5" />
+        <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/layout/row_layout_basket.xml" value="0.25" />
         <entry key="..\:/Users/antep/AndroidStudioProjects/techcareer_tubisad/BootcampGraduationProject/app/src/main/res/menu/menu_bottom.xml" value="0.19166666666666668" />
       </map>
     </option>

@@ -4,37 +4,45 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.betulantep.bootcampgraduationproject.data.entity.Basket
+import com.betulantep.bootcampgraduationproject.data.entity.Food
+import com.betulantep.bootcampgraduationproject.data.entity.Quantity
+import com.betulantep.bootcampgraduationproject.data.repo.BasketRepository
+import com.betulantep.bootcampgraduationproject.retrofit.FoodDao
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.ArrayList
+import javax.inject.Inject
 
-class DetailViewModel : ViewModel() {
-    val quantity = MutableLiveData(0)
-    val subTotal = MutableLiveData(0)
+@HiltViewModel
+class DetailViewModel @Inject constructor(var basketRepo: BasketRepository) : ViewModel() {
+    var basketFoodList = MutableLiveData<List<Basket>>()
+    var quantity = MutableLiveData<Int>(0)
+    var subTotal = MutableLiveData<Int>(0)
+    var username = basketRepo.usernameGet()
 
-    fun clickedAddToCart(view: View,viewLinear: View,foodPrice:Int){
-        view.visibility = View.GONE
-        viewLinear.visibility = View.VISIBLE
-        quantity.value = quantity.value!! + 1
-        subTotal.value = quantity.value!! * foodPrice
-        Log.e("detay","1 adet eklendi")
+    init {
+        loadAllFoodBasket()
+        basketFoodList = basketRepo.getBasketFood()
+        Log.e("detay", username)
     }
 
-    fun clickedAdd(view: View,foodPrice:Int){
-        quantity.value = quantity.value!! + 1
-        subTotal.value = quantity.value!! * foodPrice
-        Log.e("detay","1 adet eklendi")
-    }
+    fun loadAllFoodBasket() {
+        basketRepo.getFoodQuantity()
 
-    fun clickedDelete(view: View,viewLinear: View,viewCart:View,foodPrice:Int){
-        if(quantity.value!!-1 != 0){
-            quantity.value = quantity.value!! - 1
-            subTotal.value = quantity.value!! * foodPrice
-            Log.e("detay","1 adet silindi")
-        }else{
-            quantity.value = quantity.value!! - 1
-            subTotal.value = quantity.value!! * foodPrice
-            Log.e("detay","1 adet silindi")
-            viewLinear.visibility = View.GONE
-            viewCart.visibility = View.VISIBLE
-        }
     }
-
+    fun clickedAddToCart(food: Food,quantity: Int) {
+        basketRepo.addFoodBasket(
+            food.foodName,
+            food.foodImageName,
+            food.foodPrice,
+            quantity,
+            username
+        )
+        Log.e("detay", username)
+        Log.e("detay", "1 adet eklendi")
+    }
 }

@@ -14,18 +14,25 @@ import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
 import com.betulantep.bootcampgraduationproject.utils.RecyclerItemDecoration
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        auth = Firebase.auth
+        viewModel.putUsername(auth.currentUser!!.email.toString())
 
+        Log.e("username", auth.currentUser!!.email.toString())
         showShimmerEffect()
         observeLiveData()
         searchFood()
@@ -39,7 +46,6 @@ class HomeFragment : Fragment() {
         viewModel.foodsList.observe(viewLifecycleOwner){
             val adapter = FoodAdapter(it)
             binding.foodAdapter = adapter
-            Log.e("asd","food list")
         }
         viewModel.foodLoading.observe(viewLifecycleOwner){
             if(it){
@@ -48,7 +54,6 @@ class HomeFragment : Fragment() {
                 hideShimmerEffect()
             }
         }
-
     }
 
     private fun searchFood(){
@@ -63,8 +68,6 @@ class HomeFragment : Fragment() {
                 })
             }
         }
-
-
     }
 
     private fun showShimmerEffect() = with(binding) {
@@ -83,21 +86,12 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val tempViewModel : HomeViewModel by viewModels()
         viewModel = tempViewModel
-        Log.e("asd","onCreate")
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.putOnBoarding()
-        Log.e("asd","onViewCreated")
-
-
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e("asd","onDestroy")
     }
 
 }

@@ -7,5 +7,5 @@ data class BasketResponse(
     @SerializedName("success")
     val success: Int,
     @SerializedName("sepet_yemekler")
-    val inTheBasket: List<Basket>
+    val basketFoods: List<Basket>
 )

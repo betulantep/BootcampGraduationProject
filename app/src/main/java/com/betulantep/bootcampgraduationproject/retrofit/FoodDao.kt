@@ -30,7 +30,7 @@ interface FoodDao {
         @Field("yemek_resim_adi") food_image_name: String,
         @Field("yemek_fiyat") food_price: Int,
         @Field("yemek_siparis_adet") food_order_quantity: Int,
-        @Field("kullanici_adi") user_name: Int
+        @Field("kullanici_adi") user_name: String
     ): Call<CRUDResponse>
 
     @POST("yemekler/sepettenYemekSil.php")

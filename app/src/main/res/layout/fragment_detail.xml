@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="quantityResult"
-            type="String" />
-        <variable
-            name="subTotalResult"
-            type="String" />
+
         <variable
             name="viewModel"
             type="com.betulantep.bootcampgraduationproject.ui.detail.DetailViewModel" />
@@ -73,7 +68,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_button_detail_cart"
             android:fontFamily="@font/poppins"
-            android:onClick="@{()->detailFragment.clickedAddToCart(btnDetailAddToCart,linearAddDeleteDetail)}"
+            android:onClick="@{()->detailFragment.clickedAddToCart(food,Integer.parseInt(tvDetailQuantity.getText().toString()))}"
             android:text="@string/sepete_ekle"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -88,14 +83,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins"
+            android:text="₺0"
             android:textAlignment="center"
-            android:text="@{subTotalResult}"
             android:textColor="@color/black_100"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/linearAddDeleteDetail"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -129,12 +122,12 @@
             android:id="@+id/chip4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="25-35 dk"
             app:layout_constraintEnd_toStartOf="@+id/chip5"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDetailFoodName" />
+            app:layout_constraintTop_toBottomOf="@+id/linearAddDeleteDetail" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
@@ -160,14 +153,14 @@
 
         <LinearLayout
             android:id="@+id/linearAddDeleteDetail"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="56dp"
-            android:layout_marginEnd="1dp"
             android:orientation="horizontal"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/chip5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvDetailSubTotal">
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailFoodName">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnDetailDelete"
@@ -178,7 +171,7 @@
                 android:foreground="@drawable/ic_minus"
                 android:foregroundGravity="center"
                 android:foregroundTint="@color/white"
-                android:onClick="@{()->detailFragment.clickedDelete(btnDetailDelete,linearAddDeleteDetail,btnDetailAddToCart)}" />
+                android:onClick="@{()->detailFragment.clickedDelete()}" />
 
 
             <TextView
@@ -187,8 +180,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_extrabold"
-                android:text="@{quantityResult}"
                 android:gravity="center"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/text_blue_dark"
                 android:textSize="30sp" />
@@ -202,8 +195,7 @@
                 android:foreground="@drawable/ic_plus"
                 android:foregroundGravity="center"
                 android:foregroundTint="@color/white"
-                android:onClick="@{()->detailFragment.clickedAdd(btnDetailAdd)}" />
-
+                android:onClick="@{()->detailFragment.clickedAdd()}" />
 
 
         </LinearLayout>

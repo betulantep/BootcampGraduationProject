@@ -1,9 +1,12 @@
 package com.betulantep.bootcampgraduationproject.data.entity
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Quantity(
-    var food_id:Int,
-    var quantity:Int,
-    var subtotal_price:Int
+    val food_name: String,
+    val food_price: Int,
+    val food_image_name:String,
+    val quantity:Int,
+    val subTotal:Int
 ): Serializable{}

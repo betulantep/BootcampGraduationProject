@@ -22,6 +22,7 @@ class SplashFragment : Fragment() {
         val tempViewModel : SplashViewModel by viewModels()
         viewModel = tempViewModel
         auth = Firebase.auth
+
     }
 
     override fun onCreateView(
