@@ -26,7 +26,7 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
-            delay(1000)
+            delay(6000)
             Navigation.actionFragment(view, WelcomeFragmentDirections.actionWelcomeFragmentToHomeFragment())
         }
     }
