@@ -5,15 +5,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.betulantep.bootcampgraduationproject.R
+import com.betulantep.bootcampgraduationproject.databinding.FragmentFavoriteBinding
+import com.betulantep.bootcampgraduationproject.ui.adapter.FavoriteAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
+    private lateinit var binding: FragmentFavoriteBinding
+    private lateinit var viewModel: FavoriteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_favorite, container, false)
+        viewModel.readFavoriteFood.observe(viewLifecycleOwner){
+            binding.mAdapter = FavoriteAdapter(it)
+            if(it.isNullOrEmpty()){
+                binding.ivNoFood.visibility = View.VISIBLE
+                binding.tvNoFood.visibility = View.VISIBLE
+            }else{
+                binding.ivNoFood.visibility = View.GONE
+                binding.tvNoFood.visibility = View.GONE
+            }
+        }
+
+        return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : FavoriteViewModel by viewModels()
+        viewModel = tempViewModel
     }
 }

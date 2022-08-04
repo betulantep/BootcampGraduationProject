@@ -1,18 +1,24 @@
 package com.betulantep.bootcampgraduationproject.data.repo
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
+import com.betulantep.bootcampgraduationproject.data.database.FavoriteDao
+import com.betulantep.bootcampgraduationproject.data.entity.Favorite
 import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.data.entity.FoodResponse
 import com.betulantep.bootcampgraduationproject.retrofit.FoodDao
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class FoodRepository @Inject constructor(var foodDao: FoodDao) {
+class FoodRepository @Inject constructor(var foodDao: FoodDao,var favoriteDao: FavoriteDao) {
     var foodsList : MutableLiveData<List<Food>>
     var foodLoading: MutableLiveData<Boolean> = MutableLiveData()
+
     init {
         foodsList = MutableLiveData()
     }
@@ -59,4 +65,19 @@ class FoodRepository @Inject constructor(var foodDao: FoodDao) {
         })
     }
 
+    fun readFavoriteFood(): Flow<List<Favorite>> {
+        return favoriteDao.readFavoriteFood()
+    }
+
+    suspend fun insertFavoriteFood(favorite: Favorite){
+        favoriteDao.insertFavoriteFood(favorite)
+    }
+
+    suspend fun deleteFavoriteFood(favorite: Favorite){
+        favoriteDao.deleteFavoriteFood(favorite)
+    }
+
+    suspend fun deleteAllFavoriteFoods(){
+        favoriteDao.deleteAllFavoriteFoods()
+    }
 }
