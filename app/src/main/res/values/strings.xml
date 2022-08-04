@@ -5,10 +5,11 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="sign_in">SIGN IN</string>
-    <string name="already_have_an_account">Already have an account?</string>
-    <string name="sign_up">SIGN UP</string>
-    <string name="do_not_have_an_account">Do not have an account?</string>
+    <string name="sign_in">Giriş Yap</string>
+    <string name="already_have_an_account">Zaten hesabınız var mı?</string>
+    <string name="sign_up">Kayıt Ol</string>
+    <string name="do_not_have_an_account">Bir hesabınız yok mu?</string>
     <string name="search">Search</string>
     <string name="sepete_ekle">Sepete Ekle</string>
+    <string name="sign_out">Çıkış Yap</string>
 </resources>

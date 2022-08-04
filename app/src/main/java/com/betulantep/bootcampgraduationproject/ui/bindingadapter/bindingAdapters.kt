@@ -24,7 +24,7 @@ fun textChangedEmailListener(et: EditText, textInputLayout: TextInputLayout){
 
 fun validEditTextEmail(et: EditText): String? {
     if(!Patterns.EMAIL_ADDRESS.matcher(et.text.toString()).matches()){
-        return "Invalid Email Address"
+        return "Geçersiz E-posta Adresi"
     }
     return null
 }
@@ -40,16 +40,16 @@ fun textChangedPasswordListener(et: EditText, textInputLayout: TextInputLayout){
 
 fun validEditTextPassword(password:String): String? {
     if(password.length < 8){
-        return "Minimum 8 Character Password"
+        return "En az 8 Karakter Olmalı"
     }
     if(!password.matches(".*[A-Z].*".toRegex())){
-        return "Must Contain 1 Upper-case Character"
+        return "En az 1 Büyük Harf İçermeli"
     }
     if(!password.matches(".*[a-z].*".toRegex())){
-        return "Must Contain 1 Lower-case Character"
+        return "En az 1 Küçük Harf İçermeli"
     }
     if(!password.matches(".*[@#\$%^&+=*].*".toRegex())){
-        return "Must Contain 1 Special Character (@#\$%^&+=*)"
+        return "En az 1 Özel Karakter İçermeli"
     }
     return null
 }

@@ -14,7 +14,7 @@
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/bg_button_sign"
-        android:text="Çıkış"
+        android:text="@string/sign_out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -20,7 +20,7 @@ class SplashViewModel @Inject constructor(var appPref: AppPref): ViewModel() {
 
     fun showOnBoarding(view: View,auth: FirebaseAuth){
         viewModelScope.launch {
-            delay(500)
+            delay(5000)
             if(appPref.getOnBoardingShow()){
                 Navigation.actionFragment(view,SplashFragmentDirections.actionSplashFragmentToOnBoardingFragment())
             }else{
