@@ -42,6 +42,8 @@ class DetailFragment : Fragment() {
             for (basket in it){
                 if(basket.basket_food_name == navArgs.food.foodName){
                     binding.tvDetailQuantity.text = basket.basket_order_quantity.toString()
+                    subTotal = basket.basket_food_price * basket.basket_order_quantity
+                    binding.tvDetailSubTotal.text = "₺$subTotal"
                 }
             }
         }
