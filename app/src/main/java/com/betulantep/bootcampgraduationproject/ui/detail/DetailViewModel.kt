@@ -22,8 +22,6 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(var basketRepo: BasketRepository,var appPref: AppPref) : ViewModel() {
     var basketFoodList = MutableLiveData<List<Basket>>()
-    var quantity = MutableLiveData<Int>(0)
-    var subTotal = MutableLiveData<Int>(0)
     var username : String
 
     fun usernameGet(): String{

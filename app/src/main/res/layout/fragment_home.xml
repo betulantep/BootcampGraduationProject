@@ -111,7 +111,7 @@
             app:layout_constraintEnd_toEndOf="@+id/ivImageTop"
             app:layout_constraintTop_toTopOf="@+id/textView5"
             app:srcCompat="@drawable/ic_delivery_place"
-            app:tint="@color/red" />
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/textView7"

@@ -4,8 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betulantep.bootcampgraduationproject.data.entity.Basket
-import com.betulantep.bootcampgraduationproject.data.entity.Food
-import com.betulantep.bootcampgraduationproject.data.entity.Quantity
 import com.betulantep.bootcampgraduationproject.data.repo.BasketRepository
 import com.betulantep.bootcampgraduationproject.utils.AppPref
 import dagger.hilt.android.lifecycle.HiltViewModel

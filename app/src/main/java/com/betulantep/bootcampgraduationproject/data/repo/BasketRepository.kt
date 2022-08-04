@@ -1,47 +1,41 @@
 package com.betulantep.bootcampgraduationproject.data.repo
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.betulantep.bootcampgraduationproject.data.entity.*
+import com.betulantep.bootcampgraduationproject.data.entity.Basket
+import com.betulantep.bootcampgraduationproject.data.entity.BasketResponse
+import com.betulantep.bootcampgraduationproject.data.entity.CRUDResponse
 import com.betulantep.bootcampgraduationproject.retrofit.FoodDao
 import com.betulantep.bootcampgraduationproject.utils.AppPref
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
 import javax.inject.Inject
 
 
 class BasketRepository @Inject constructor(var foodDao: FoodDao, var appPref: AppPref) {
     var username : String
-
-
+    lateinit var auth: FirebaseAuth
     val basketFoodList : MutableLiveData<List<Basket>>
 
     init {
         basketFoodList = MutableLiveData()
-        username = usernameGet()
-
+        auth = Firebase.auth
+        username = auth.currentUser!!.email.toString()
     }
 
-    fun usernameGet(): String{
-        CoroutineScope(Dispatchers.Main).launch {
-            username = appPref.getUsername()
-        }
-       return username
-    }
     fun getBasketFood(): MutableLiveData<List<Basket>> {
         return basketFoodList
     }
 
     fun getFoodQuantity(){
-        username = usernameGet()
-    //    Log.e("asd",username)
-        foodDao.getAllFoodBasket("betul@gmail.com").enqueue(object : Callback<BasketResponse> {
+        foodDao.getAllFoodBasket(username).enqueue(object : Callback<BasketResponse> {
             override fun onResponse(
                 call: Call<BasketResponse>?,
                 response: Response<BasketResponse>

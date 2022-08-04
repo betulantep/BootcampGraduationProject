@@ -10,9 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.betulantep.bootcampgraduationproject.R
-import com.betulantep.bootcampgraduationproject.data.entity.Basket
 import com.betulantep.bootcampgraduationproject.data.entity.Food
-import com.betulantep.bootcampgraduationproject.data.entity.Quantity
 import com.betulantep.bootcampgraduationproject.databinding.FragmentDetailBinding
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
 import dagger.hilt.android.AndroidEntryPoint
