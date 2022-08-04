@@ -60,13 +60,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="99dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/poppins_extrabold"
                     android:text="@{basket.basket_food_name}"
                     android:textColor="@color/text_blue_dark"
                     android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/tvBasketFoodPrice"
+                    app:layout_constraintEnd_toStartOf="@+id/ivFoodDelete"
                     app:layout_constraintStart_toEndOf="@+id/ivBasketFoodImage"
                     app:layout_constraintTop_toTopOf="@+id/ivBasketFoodImage" />
 
@@ -74,33 +73,33 @@
                     android:id="@+id/tvBasketFoodPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppins_extrabold"
-                    android:text="@{String.valueOf(basket.basket_food_price)}"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvBasketFoodName"
-                    app:layout_constraintEnd_toStartOf="@+id/ivFoodDelete"
-                    app:layout_constraintTop_toTopOf="@+id/tvBasketFoodName" />
+                    android:text="@{`₺` + String.valueOf(basket.basket_food_price)}"
+                    android:textColor="@color/text_blue_dark"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvBasketFoodName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBasketFoodName" />
 
                 <TextView
                     android:id="@+id/tvBasketTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/poppins_extrabold"
-                    android:text="asdas"
+                    android:text="@{subTotalResult}"
                     android:textColor="@color/text_blue_dark"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvBasketQuantity"
-                    app:layout_constraintEnd_toEndOf="@+id/tvBasketFoodPrice"
-                    app:layout_constraintStart_toEndOf="@+id/tvBasketQuantity"
+                    app:layout_constraintEnd_toEndOf="@+id/ivFoodDelete"
                     app:layout_constraintTop_toTopOf="@+id/tvBasketQuantity" />
 
                 <ImageView
                     android:id="@+id/ivFoodDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_baseline_delete_24" />
@@ -109,11 +108,11 @@
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Adet: "
                     app:layout_constraintBottom_toBottomOf="@+id/ivBasketFoodImage"
                     app:layout_constraintStart_toStartOf="@+id/tvBasketFoodName"
-                    app:layout_constraintTop_toBottomOf="@+id/tvBasketFoodName" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvBasketFoodPrice" />
 
                 <TextView
                     android:id="@+id/tvBasketQuantity"

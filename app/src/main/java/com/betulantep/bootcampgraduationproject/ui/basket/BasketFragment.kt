@@ -1,6 +1,7 @@
 package com.betulantep.bootcampgraduationproject.ui.basket
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +25,8 @@ import java.util.ArrayList
 class BasketFragment : Fragment() {
     private lateinit var binding: FragmentBasketBinding
     private lateinit var viewModel: BasketViewModel
-    var quantityBasket = 0
-    var quantitySubtotal = 0
+    var subTotal = 0
+    var total = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +37,15 @@ class BasketFragment : Fragment() {
             Navigation.actionFragment(it, BasketFragmentDirections.actionBasketFragmentToHomeFragment())
         }
         viewModel.basketFoodList.observe(viewLifecycleOwner){
-           binding.basketAdapter = BasketAdapter(it,viewModel)
+            if(it.isNullOrEmpty()){
+                binding.basketAdapter = BasketAdapter(arrayListOf(),viewModel)
+            }else{
+                binding.basketAdapter = BasketAdapter(it,viewModel)
+            }
+        }
+        viewModel.viewModelSubTotal.observe(viewLifecycleOwner){
+            Log.e("asd",total.toString())
+            binding.tvBasketFoodTotal.text = "₺ $it"
         }
 
         return binding.root

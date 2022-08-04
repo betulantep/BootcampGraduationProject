@@ -13,7 +13,7 @@
         android:title="Favorite"
         app:showAsAction="always" />
     <item
-        android:id="@+id/detailFragment"
+        android:id="@+id/userFragment"
         android:icon="@drawable/ic_user"
         android:title="User"
         app:showAsAction="always" />

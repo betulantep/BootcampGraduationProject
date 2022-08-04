@@ -22,11 +22,13 @@ class BasketAdapter(
     var basketList: List<Basket>,
     var viewModel: BasketViewModel
 ) : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
+    var total = 0
     class BasketViewHolder(var binding: RowLayoutBasketBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(basket: Basket) {
             binding.basket = basket
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketViewHolder {
@@ -40,9 +42,15 @@ class BasketAdapter(
     override fun onBindViewHolder(holder: BasketViewHolder, position: Int) = with(holder) {
         val basket = basketList[position]
         bind(basket)
+        var subTotal = 0
+        subTotal = basket.basket_food_price * basket.basket_order_quantity
+        total += subTotal
         binding.ivFoodDelete.setOnClickListener {
             viewModel.deleteFood(basket.basket_food_id,viewModel.username)
+            total -= (basket.basket_food_price * basket.basket_order_quantity)
         }
+        binding.subTotalResult = "₺ $subTotal"
+        viewModel.viewModelSubTotal.value = total
     }
 
     override fun getItemCount(): Int = basketList.size

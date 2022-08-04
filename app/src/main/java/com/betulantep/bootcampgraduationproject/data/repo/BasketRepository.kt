@@ -1,6 +1,7 @@
 package com.betulantep.bootcampgraduationproject.data.repo
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.betulantep.bootcampgraduationproject.data.entity.*
 import com.betulantep.bootcampgraduationproject.retrofit.FoodDao
@@ -18,15 +19,17 @@ import javax.inject.Inject
 class BasketRepository @Inject constructor(var foodDao: FoodDao, var appPref: AppPref) {
     var username : String
 
+
     val basketFoodList : MutableLiveData<List<Basket>>
 
     init {
         basketFoodList = MutableLiveData()
         username = usernameGet()
+
     }
 
     fun usernameGet(): String{
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             username = appPref.getUsername()
         }
        return username
@@ -36,13 +39,16 @@ class BasketRepository @Inject constructor(var foodDao: FoodDao, var appPref: Ap
     }
 
     fun getFoodQuantity(){
-        foodDao.getAllFoodBasket(username).enqueue(object : Callback<BasketResponse> {
+        username = usernameGet()
+    //    Log.e("asd",username)
+        foodDao.getAllFoodBasket("betul@gmail.com").enqueue(object : Callback<BasketResponse> {
             override fun onResponse(
                 call: Call<BasketResponse>?,
                 response: Response<BasketResponse>
             ) {
                 val list = response.body().basketFoods
                 basketFoodList.value = list
+                Log.e("asd",basketFoodList.value.toString())
             }
             override fun onFailure(call: Call<BasketResponse>?, t: Throwable?) {}
         })

@@ -25,7 +25,7 @@ class AppPref @Inject constructor(var context: Context) {
 
     suspend fun getUsername(): String {
         val p = context.dataStore.data.first()
-        return p[USERNAME] ?: "betul"
+        return p[USERNAME] ?: "betul@gmail.com"
     }
     suspend fun putOnBoardingShow(show: Boolean) {
         context.dataStore.edit {

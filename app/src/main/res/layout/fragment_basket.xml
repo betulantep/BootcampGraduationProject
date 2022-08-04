@@ -75,14 +75,17 @@
 
         <TextView
             android:id="@+id/tvBasketFoodTotal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="₺ 265"
+            android:text="₺ 0"
+            android:textAlignment="textEnd"
             android:textColor="@color/black_100"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="@+id/btnBasketConfirm"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <TextView
