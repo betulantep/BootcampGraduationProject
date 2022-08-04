@@ -51,6 +51,7 @@ class BasketFragment : Fragment() {
                 binding.basketAdapter = BasketAdapter(arrayListOf(),viewModel)
             }else{
                 binding.basketAdapter = BasketAdapter(it,viewModel)
+                binding.lottieEmptyBasket.visibility = View.GONE
             }
         }
         viewModel.viewModelSubTotal.observe(viewLifecycleOwner){
