@@ -38,6 +38,14 @@ class DetailFragment : Fragment() {
         binding.viewModel = viewModel
         binding.detailFragment = this
 
+        viewModel.basketFoodList.observe(viewLifecycleOwner){
+            for (basket in it){
+                if(basket.basket_food_name == navArgs.food.foodName){
+                    binding.tvDetailQuantity.text = basket.basket_order_quantity.toString()
+                }
+            }
+        }
+
         return binding.root
     }
 
