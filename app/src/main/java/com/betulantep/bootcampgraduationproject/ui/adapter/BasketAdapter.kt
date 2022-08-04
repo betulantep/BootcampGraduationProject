@@ -16,6 +16,7 @@ import com.betulantep.bootcampgraduationproject.ui.basket.BasketViewModel
 import com.betulantep.bootcampgraduationproject.ui.detail.DetailViewModel
 import com.betulantep.bootcampgraduationproject.ui.home.HomeFragmentDirections
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
+import com.google.android.material.snackbar.Snackbar
 import java.util.ArrayList
 
 class BasketAdapter(
@@ -41,13 +42,17 @@ class BasketAdapter(
 
     override fun onBindViewHolder(holder: BasketViewHolder, position: Int) = with(holder) {
         val basket = basketList[position]
+        val mContext = binding.root.context
         bind(basket)
         var subTotal = 0
         subTotal = basket.basket_food_price * basket.basket_order_quantity
         total += subTotal
         binding.ivFoodDelete.setOnClickListener {
-            viewModel.deleteFood(basket.basket_food_id,viewModel.username)
-            total -= (basket.basket_food_price * basket.basket_order_quantity)
+            Snackbar.make(binding.root,"Silmek istediğinize emin misiniz?",Snackbar.LENGTH_LONG)
+                .setAction("EVET") {
+                    viewModel.deleteFood(basket.basket_food_id, viewModel.username)
+                    total -= (basket.basket_food_price * basket.basket_order_quantity)
+                }.show()
         }
         binding.subTotalResult = "₺ $subTotal"
         viewModel.viewModelSubTotal.value = total

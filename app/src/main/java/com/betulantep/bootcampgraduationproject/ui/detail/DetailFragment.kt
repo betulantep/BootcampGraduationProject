@@ -13,6 +13,7 @@ import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.databinding.FragmentDetailBinding
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +52,7 @@ class DetailFragment : Fragment() {
 
     fun clickedAddToCart(food: Food,quantity: Int){
         viewModel.clickedAddToCart(food,quantity)
+        Snackbar.make(binding.root,"Ürün sepete eklendi.", Snackbar.LENGTH_LONG).show()
     }
     fun clickedAdd(){
         quantity = binding.tvDetailQuantity.text.toString().toInt()

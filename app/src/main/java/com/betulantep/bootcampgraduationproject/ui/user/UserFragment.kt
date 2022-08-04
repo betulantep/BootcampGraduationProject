@@ -33,6 +33,7 @@ class UserFragment : Fragment() {
             auth.signOut()
             Navigation.actionFragment(it,UserFragmentDirections.actionUserFragmentToSignInFragment())
         }
+        binding.tvUsername.text = auth.currentUser!!.email.toString()
         return binding.root
         //return inflater.inflate(R.layout.fragment_user, container, false)
     }

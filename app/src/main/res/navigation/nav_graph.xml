@@ -136,4 +136,9 @@
             app:popUpTo="@id/basketFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.betulantep.bootcampgraduationproject.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>
