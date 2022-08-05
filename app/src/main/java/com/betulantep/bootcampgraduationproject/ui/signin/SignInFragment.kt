@@ -22,6 +22,7 @@ import com.betulantep.bootcampgraduationproject.databinding.FragmentOnboardingBi
 import com.betulantep.bootcampgraduationproject.databinding.FragmentSignInBinding
 import com.betulantep.bootcampgraduationproject.ui.onboarding.OnBoardingFragmentDirections
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
+import com.betulantep.bootcampgraduationproject.utils.showToast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -57,7 +58,7 @@ class SignInFragment : Fragment() {
         if(emailHelperText == null && passwordHelperText == null){
             viewModel.signIn(auth,view,email,password)
         }else{
-            Toast.makeText(requireContext(),"Required Email and Password",Toast.LENGTH_SHORT).show()
+            showToast(requireContext(),R.string.required_email_and_password)
         }
     }
 
@@ -75,7 +76,7 @@ class SignInFragment : Fragment() {
     private fun validPassword(): String? {
         val password = binding.etSignInPassword.text.toString()
         if(password.isEmpty()){
-            return "Required Password"
+            return "Şifre Gerekli"
         }
         return null
     }

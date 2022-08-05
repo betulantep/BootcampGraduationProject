@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BootcampGraduationProject</string>
+    <string name="app_name">Food Store</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email">Email</string>
@@ -9,7 +9,22 @@
     <string name="already_have_an_account">Zaten hesabınız var mı?</string>
     <string name="sign_up">Kayıt Ol</string>
     <string name="do_not_have_an_account">Bir hesabınız yok mu?</string>
-    <string name="search">Search</string>
+    <string name="search">Ara</string>
     <string name="sepete_ekle">Sepete Ekle</string>
     <string name="sign_out">Çıkış Yap</string>
+    <string name="evet">EVET</string>
+    <string name="favori_urun_yok">Favori Ürün Yok</string>
+    <string name="silmek_istediginize_emin_misiniz">"Silmek istediğinize emin misiniz?"</string>
+    <string name="ucretsiz_gonderim">Ücretsiz Gönderim</string>
+    <string name="favorilere_eklendi">Favorilere eklendi</string>
+    <string name="favorilerden_silindi">Favorilerden silindi</string>
+    <string name="urun_sepete_eklendi">Ürün sepete eklendi</string>
+    <string name="required_email_and_password">E-Posta adresi ve şifre gerekli</string>
+    <string name="lutfen_eposta_sifre_kontrol_ediniz">Lütfen E-Posta ve Şifresiyi kontrol ediniz</string>
+    <string name="favoriler">Favoriler</string>
+    <string name="merhaba">Merhaba</string>
+    <string name="teslimat_adresi">Teslimat Adresi</string>
+    <string name="evim">Evim</string>
+    <string name="anasayfa">Anasayfa</string>
+    <string name="kullanici">Kullanıcı</string>
 </resources>

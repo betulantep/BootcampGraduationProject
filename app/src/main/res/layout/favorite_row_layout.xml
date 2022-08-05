@@ -43,7 +43,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:load_image="@{favorite.food.foodImageName}"
-                    app:srcCompat="@drawable/sutlac" />
+                    app:srcCompat="@drawable/ic_baseline_refresh_24" />
 
                 <TextView
                     android:id="@+id/tvFoodName"
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Ücretsiz Gönderim"
+                    android:text="@string/ucretsiz_gonderim"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"

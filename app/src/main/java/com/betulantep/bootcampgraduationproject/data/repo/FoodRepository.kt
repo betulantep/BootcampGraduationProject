@@ -9,6 +9,9 @@ import com.betulantep.bootcampgraduationproject.data.entity.Favorite
 import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.data.entity.FoodResponse
 import com.betulantep.bootcampgraduationproject.retrofit.FoodDao
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,6 +21,7 @@ import javax.inject.Inject
 class FoodRepository @Inject constructor(var foodDao: FoodDao,var favoriteDao: FavoriteDao) {
     var foodsList : MutableLiveData<List<Food>>
     var foodLoading: MutableLiveData<Boolean> = MutableLiveData()
+
 
     init {
         foodsList = MutableLiveData()

@@ -46,7 +46,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:load_image="@{food.foodImageName}"
-                    app:srcCompat="@drawable/sutlac" />
+                    app:srcCompat="@drawable/ic_baseline_refresh_24" />
 
                 <TextView
                     android:id="@+id/tvFoodName"

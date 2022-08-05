@@ -1,11 +1,14 @@
 package com.betulantep.bootcampgraduationproject.utils
 
 import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
@@ -17,6 +20,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.betulantep.bootcampgraduationproject.R
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 fun Navigation.actionFragment(view: View,navDirections: NavDirections){
@@ -30,4 +34,11 @@ fun Activity.updateStatusBarColor(colorValue: Int) {
     window.statusBarColor = resources.getColor(colorValue)
 }
 
+fun showSnackBar(view: View, @StringRes message: Int){
+    Snackbar.make(view,message, Snackbar.LENGTH_SHORT).show()
+}
+
+fun showToast(context: Context, @StringRes message: Int){
+    Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+}
 

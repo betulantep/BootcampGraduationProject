@@ -9,5 +9,6 @@ import java.io.Serializable
 data class Favorite(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    var food: Food
+    var food: Food,
+    var username: String
 )

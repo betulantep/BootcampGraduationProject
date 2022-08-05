@@ -10,20 +10,33 @@ import androidx.fragment.app.viewModels
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.databinding.FragmentFavoriteBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.FavoriteAdapter
+import com.betulantep.bootcampgraduationproject.utils.RecyclerItemDecoration
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteBinding
     private lateinit var viewModel: FavoriteViewModel
+    private lateinit var auth: FirebaseAuth
+    lateinit var userName : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_favorite, container, false)
+        auth = Firebase.auth
+        userName = auth.currentUser!!.email.toString()
+
         viewModel.readFavoriteFood.observe(viewLifecycleOwner){
-            binding.mAdapter = FavoriteAdapter(it)
+            for (favorite in it){
+                if(favorite.username == userName){
+                    binding.mAdapter = FavoriteAdapter(it)
+                }
+            }
             if(it.isNullOrEmpty()){
                 binding.ivNoFood.visibility = View.VISIBLE
                 binding.tvNoFood.visibility = View.VISIBLE
@@ -32,6 +45,8 @@ class FavoriteFragment : Fragment() {
                 binding.tvNoFood.visibility = View.GONE
             }
         }
+
+        binding.rvFavoriteFood.addItemDecoration(RecyclerItemDecoration())
 
         return binding.root
     }

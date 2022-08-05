@@ -17,6 +17,7 @@ import com.betulantep.bootcampgraduationproject.databinding.FragmentSignUpBindin
 import com.betulantep.bootcampgraduationproject.ui.onboarding.OnBoardingFragmentDirections
 import com.betulantep.bootcampgraduationproject.ui.signin.SignInFragmentDirections
 import com.betulantep.bootcampgraduationproject.ui.signin.SignInViewModel
+import com.betulantep.bootcampgraduationproject.utils.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -49,7 +50,7 @@ class SignUpFragment : Fragment() {
         if(emailHelperText == null && passwordHelperText == null && confirmPasswordHelperText == null){
             viewModel.signUp(auth,view,email,password)
         }else{
-            Toast.makeText(requireContext(),"Please check Email or Password",Toast.LENGTH_SHORT).show()
+            showToast(requireContext(),R.string.lutfen_eposta_sifre_kontrol_ediniz)
         }
     }
     private fun confirmPasswordFocusListener(){
@@ -60,7 +61,7 @@ class SignUpFragment : Fragment() {
                 val password = binding.etSignUpPassword.text.toString()
                 val confirmPassword = binding.etSignUpConfirmPassword.text.toString()
                 if(password != confirmPassword){
-                    binding.signUpTextFieldConfirmPassword.helperText = "Not Equals Passwords"
+                    binding.signUpTextFieldConfirmPassword.helperText = "Şifreler aynı değil"
                 }else{
                     binding.signUpTextFieldConfirmPassword.helperText = null
                 }

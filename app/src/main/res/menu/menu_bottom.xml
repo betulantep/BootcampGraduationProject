@@ -5,17 +5,17 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"
+        android:title="@string/anasayfa"
         app:showAsAction="always" />
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="Favorite"
+        android:title="@string/favoriler"
         app:showAsAction="always" />
     <item
         android:id="@+id/userFragment"
         android:icon="@drawable/ic_user"
-        android:title="User"
+        android:title="@string/kullanici"
         app:showAsAction="always" />
 
     <item

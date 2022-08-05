@@ -15,14 +15,39 @@
         android:layout_height="match_parent"
         tools:context=".ui.favorite.FavoriteFragment">
 
+        <ImageView
+            android:id="@+id/ivImageTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/bg_home_ust"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/merienda"
+            android:text="@string/favoriler"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/ivImageTop"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavoriteFood"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-
             android:layout_marginBottom="16dp"
             android:adapter="@{mAdapter}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -30,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivImageTop"
             app:spanCount="2" />
 
         <ImageView
@@ -50,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Favori Ürün Yok"
+            android:text="@string/favori_urun_yok"
             android:visibility="invisible"
             android:textSize="16sp"
             android:textStyle="bold"
