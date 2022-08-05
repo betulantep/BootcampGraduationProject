@@ -1,5 +1,6 @@
 package com.betulantep.bootcampgraduationproject.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Build
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
@@ -20,6 +22,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.betulantep.bootcampgraduationproject.R
+import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
@@ -34,8 +37,11 @@ fun Activity.updateStatusBarColor(colorValue: Int) {
     window.statusBarColor = resources.getColor(colorValue)
 }
 
+
 fun showSnackBar(view: View, @StringRes message: Int){
-    Snackbar.make(view,message, Snackbar.LENGTH_SHORT).show()
+    Snackbar.make(view,message, Snackbar.LENGTH_SHORT)
+        .setAnimationMode(com.airbnb.lottie.R.anim.abc_fade_in)
+        .show()
 }
 
 fun showToast(context: Context, @StringRes message: Int){
