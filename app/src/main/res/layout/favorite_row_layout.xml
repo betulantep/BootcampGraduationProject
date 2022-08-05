@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -9,12 +10,12 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardviewFoodHome"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             app:cardCornerRadius="4dp"
@@ -27,19 +28,18 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="10dp">
 
                 <ImageView
                     android:id="@+id/ivFoodImage"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:load_image="@{favorite.food.foodImageName}"
@@ -51,22 +51,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@{favorite.food.foodName}"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/text_blue_dark"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFoodImage" />
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/ivFavoriteDelete"
+                    app:layout_constraintStart_toEndOf="@+id/ivFoodImage"
+                    app:layout_constraintTop_toTopOf="@+id/ivFoodImage" />
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvFoodPrice"
                     app:layout_constraintStart_toStartOf="@+id/tvFoodName"
                     app:layout_constraintTop_toBottomOf="@+id/tvFoodName"
                     app:srcCompat="@drawable/ic_baseline_directions_bike_24" />
@@ -85,7 +84,7 @@
 
                 <TextView
                     android:id="@+id/tvFoodPrice"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
@@ -94,20 +93,19 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/text_blue_dark"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivFoodImage"
                     app:layout_constraintStart_toStartOf="@+id/imageView4"
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/ivFavoriteDelete"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvFoodPrice"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tvFoodPrice"
-                    app:srcCompat="@drawable/ic_baseline_add_box_24" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_delete_24" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,7 @@ class BasketFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_basket, container, false)
         auth = Firebase.auth
-        var userName = auth.currentUser!!.email.toString()
+        val userName = auth.currentUser!!.email.toString()
         binding.topAppBarBasket.setNavigationOnClickListener {
             Navigation.actionFragment(it, BasketFragmentDirections.actionBasketFragmentToHomeFragment())
         }
@@ -55,7 +55,6 @@ class BasketFragment : Fragment() {
             }
         }
         viewModel.viewModelSubTotal.observe(viewLifecycleOwner){
-            Log.e("asd",total.toString())
             binding.tvBasketFoodTotal.text = "₺$it"
         }
 

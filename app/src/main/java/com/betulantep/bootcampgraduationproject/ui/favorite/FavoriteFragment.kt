@@ -34,7 +34,7 @@ class FavoriteFragment : Fragment() {
         viewModel.readFavoriteFood.observe(viewLifecycleOwner){
             for (favorite in it){
                 if(favorite.username == userName){
-                    binding.mAdapter = FavoriteAdapter(it)
+                    binding.mAdapter = FavoriteAdapter(it,viewModel)
                 }
             }
             if(it.isNullOrEmpty()){
