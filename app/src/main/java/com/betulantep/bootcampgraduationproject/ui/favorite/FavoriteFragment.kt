@@ -40,6 +40,7 @@ class FavoriteFragment : Fragment() {
             if(it.isNullOrEmpty()){
                 binding.ivNoFood.visibility = View.VISIBLE
                 binding.tvNoFood.visibility = View.VISIBLE
+                binding.rvFavoriteFood.visibility = View.GONE
             }else{
                 binding.ivNoFood.visibility = View.GONE
                 binding.tvNoFood.visibility = View.GONE

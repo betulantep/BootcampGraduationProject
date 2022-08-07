@@ -3,6 +3,7 @@ package com.betulantep.bootcampgraduationproject.ui.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.betulantep.bootcampgraduationproject.data.entity.Favorite
 import com.betulantep.bootcampgraduationproject.databinding.FavoriteRowLayoutBinding

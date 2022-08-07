@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/merienda"
             android:freezesText="true"
-            android:text="Start Your Favorite\n Food App"
+            android:text="Favori Uygulamanı Kullanmaya \n Başla"
             android:textAlignment="center"
             android:textColor="@color/black_100"
             android:textSize="28sp"

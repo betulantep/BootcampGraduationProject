@@ -5,12 +5,16 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.betulantep.bootcampgraduationproject.R
 import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("app:load_image")
 fun loadImage(imageView: ImageView,foodImageName: String){
     val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/$foodImageName"
-    imageView.load(imageUrl)
+    imageView.load(imageUrl){
+        crossfade(600)
+        error(R.drawable.ic_baseline_refresh_24)
+    }
 }
 
 @BindingAdapter("app:textChangedEmailListener")

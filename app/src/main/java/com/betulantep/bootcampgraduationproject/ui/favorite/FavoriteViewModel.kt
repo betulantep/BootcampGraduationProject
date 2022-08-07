@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(var foodRepo: FoodRepository): ViewModel() {
-    val readFavoriteFood: LiveData<List<Favorite>> = foodRepo.readFavoriteFood().asLiveData()
+    var readFavoriteFood: LiveData<List<Favorite>> = foodRepo.readFavoriteFood().asLiveData()
 
     fun insertFavoriteFood(favorite: Favorite) =
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,11 +26,4 @@ class FavoriteViewModel @Inject constructor(var foodRepo: FoodRepository): ViewM
         viewModelScope.launch(Dispatchers.IO) {
             foodRepo.deleteFavoriteFood(favorite)
         }
-
-    fun deleteAllFavoriteFoods() =
-        viewModelScope.launch(Dispatchers.IO) {
-            foodRepo.deleteAllFavoriteFoods()
-        }
-
-
 }

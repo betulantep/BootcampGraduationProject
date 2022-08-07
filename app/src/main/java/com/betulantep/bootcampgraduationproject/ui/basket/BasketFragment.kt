@@ -49,6 +49,7 @@ class BasketFragment : Fragment() {
         viewModel.basketFoodList.observe(viewLifecycleOwner){
             if(it.isNullOrEmpty()){
                 binding.basketAdapter = BasketAdapter(arrayListOf(),viewModel)
+
             }else{
                 binding.basketAdapter = BasketAdapter(it,viewModel)
                 binding.lottieEmptyBasket.visibility = View.GONE
