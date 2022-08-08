@@ -40,7 +40,6 @@ class FoodRepository @Inject constructor(var foodDao: FoodDao,var favoriteDao: F
             override fun onResponse(call: Call<FoodResponse>?, response: Response<FoodResponse>) {
                 val list = response.body().foods
                 foodsList.value = list
-                Log.e("asd","getallfood")
                 foodLoading.value = false
             }
 

@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
         viewModel.putUsername(auth.currentUser!!.email.toString())
 
-        Log.e("username", auth.currentUser!!.email.toString())
         showShimmerEffect()
         observeLiveData()
         searchFood()

@@ -42,7 +42,6 @@ class BasketRepository @Inject constructor(var foodDao: FoodDao, var appPref: Ap
             ) {
                 val list = response.body().basketFoods
                 basketFoodList.value = list
-                Log.e("asd",basketFoodList.value.toString())
             }
             override fun onFailure(call: Call<BasketResponse>?, t: Throwable?) {}
         })

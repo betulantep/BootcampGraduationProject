@@ -35,7 +35,6 @@ class BasketViewModel @Inject constructor(var basketRepo: BasketRepository,var a
     }
 
     fun deleteFood(foodId:Int,username:String) {
-        Log.e("usernamee",username)
         basketRepo.deleteFoodBasket(foodId,username)
     }
 
