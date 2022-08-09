@@ -16,10 +16,7 @@
         <variable
             name="basket"
             type="com.betulantep.bootcampgraduationproject.data.entity.Basket" />
-        <variable
-            name="quantity"
-            type="com.betulantep.bootcampgraduationproject.data.entity.Quantity" />
-    </data>
+        </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

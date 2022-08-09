@@ -1,7 +1,6 @@
 package com.betulantep.bootcampgraduationproject.ui.basket
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,21 +11,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.betulantep.bootcampgraduationproject.R
 import com.betulantep.bootcampgraduationproject.data.entity.Basket
-import com.betulantep.bootcampgraduationproject.data.entity.Quantity
 import com.betulantep.bootcampgraduationproject.databinding.FragmentBasketBinding
-import com.betulantep.bootcampgraduationproject.databinding.FragmentDetailBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.BasketAdapter
-import com.betulantep.bootcampgraduationproject.ui.detail.DetailFragmentDirections
-import com.betulantep.bootcampgraduationproject.ui.detail.DetailViewModel
-import com.betulantep.bootcampgraduationproject.ui.welcome.WelcomeFragmentDirections
 import com.betulantep.bootcampgraduationproject.utils.actionFragment
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.ArrayList
 
 @AndroidEntryPoint
 class BasketFragment : Fragment() {
@@ -43,12 +37,14 @@ class BasketFragment : Fragment() {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_basket, container, false)
         auth = Firebase.auth
         val userName = auth.currentUser!!.email.toString()
+
         binding.topAppBarBasket.setNavigationOnClickListener {
             Navigation.actionFragment(it, BasketFragmentDirections.actionBasketFragmentToHomeFragment())
         }
         viewModel.basketFoodList.observe(viewLifecycleOwner){
             if(it.isNullOrEmpty()){
                 binding.basketAdapter = BasketAdapter(arrayListOf(),viewModel)
+                binding.lottieEmptyBasket.visibility = View.VISIBLE
 
             }else{
                 binding.basketAdapter = BasketAdapter(it,viewModel)
@@ -79,12 +75,11 @@ class BasketFragment : Fragment() {
                 }
             }
             binding.tvBasketFoodTotal.text = "₺0"
-
-
         }
 
         return binding.root
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel : BasketViewModel by viewModels()

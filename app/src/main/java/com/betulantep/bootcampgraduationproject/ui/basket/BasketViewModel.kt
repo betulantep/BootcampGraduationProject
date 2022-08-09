@@ -1,6 +1,5 @@
 package com.betulantep.bootcampgraduationproject.ui.basket
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betulantep.bootcampgraduationproject.data.entity.Basket
@@ -36,6 +35,9 @@ class BasketViewModel @Inject constructor(var basketRepo: BasketRepository,var a
 
     fun deleteFood(foodId:Int,username:String) {
         basketRepo.deleteFoodBasket(foodId,username)
+        if(basketFoodList.value!!.size -1 == 0){
+            basketFoodList.value = emptyList()
+        }
     }
 
 

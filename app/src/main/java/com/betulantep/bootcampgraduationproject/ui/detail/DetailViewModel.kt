@@ -1,22 +1,16 @@
 package com.betulantep.bootcampgraduationproject.ui.detail
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.betulantep.bootcampgraduationproject.data.entity.Basket
 import com.betulantep.bootcampgraduationproject.data.entity.Food
-import com.betulantep.bootcampgraduationproject.data.entity.Quantity
 import com.betulantep.bootcampgraduationproject.data.repo.BasketRepository
-import com.betulantep.bootcampgraduationproject.retrofit.FoodDao
 import com.betulantep.bootcampgraduationproject.utils.AppPref
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import java.util.ArrayList
 import javax.inject.Inject
 
 @HiltViewModel
