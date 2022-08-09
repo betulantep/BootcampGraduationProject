@@ -19,9 +19,9 @@ import retrofit2.Response
 import javax.inject.Inject
 
 
-class BasketRepository @Inject constructor(var foodDao: FoodDao, var appPref: AppPref) {
+class BasketRepository @Inject constructor(var foodDao: FoodDao) {
     var username : String
-    lateinit var auth: FirebaseAuth
+    var auth: FirebaseAuth
     val basketFoodList : MutableLiveData<List<Basket>>
 
     init {

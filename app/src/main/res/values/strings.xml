@@ -27,4 +27,5 @@
     <string name="evim">Evim</string>
     <string name="anasayfa">Anasayfa</string>
     <string name="kullanici">Kullanıcı</string>
+    <string name="hatali_giris">Hatalı Giriş</string>
 </resources>

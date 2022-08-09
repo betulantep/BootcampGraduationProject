@@ -1,6 +1,5 @@
 package com.betulantep.bootcampgraduationproject.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -22,7 +21,6 @@ class BasketAdapter(
         fun bind(basket: Basket) {
             binding.basket = basket
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketViewHolder {
@@ -41,13 +39,11 @@ class BasketAdapter(
         subTotal = basket.basket_food_price * basket.basket_order_quantity
         total += subTotal
         binding.ivFoodDelete.setOnClickListener {
-
             Snackbar.make(binding.root, R.string.silmek_istediginize_emin_misiniz, Snackbar.LENGTH_LONG)
                 .setAction(R.string.evet) {
                     viewModel.deleteFood(basket.basket_food_id, viewModel.username)
                     total -= (basket.basket_food_price * basket.basket_order_quantity)
                 }.show()
-
         }
         binding.subTotalResult = "₺ $subTotal"
         viewModel.viewModelSubTotal.value = total

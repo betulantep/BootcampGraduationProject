@@ -7,7 +7,6 @@ import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.data.repo.FoodRepository
 import com.betulantep.bootcampgraduationproject.utils.AppPref
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,11 +38,4 @@ class HomeViewModel @Inject constructor(
             appPref.putOnBoardingShow(false)
         }
     }
-   fun putUsername(username:String) {
-        viewModelScope.launch {
-            appPref.putUsername(username)
-        }
-    }
-
-
 }

@@ -35,8 +35,6 @@ class DetailFragment : Fragment() {
     private lateinit var binding : FragmentDetailBinding
     private lateinit var navArgs: DetailFragmentArgs
     private lateinit var viewModel: DetailViewModel
-    private lateinit var auth:FirebaseAuth
-    private lateinit var userName : String
     val favoriteViewModel : FavoriteViewModel by viewModels()
 
     var savedFavoriteFood = false
@@ -57,8 +55,6 @@ class DetailFragment : Fragment() {
         binding.food = navArgs.food
         binding.viewModel = viewModel
         binding.detailFragment = this
-        auth = Firebase.auth
-        userName = auth.currentUser!!.email.toString()
 
         viewModel.basketFoodList.observe(viewLifecycleOwner){
             for (basket in it){
@@ -109,7 +105,7 @@ class DetailFragment : Fragment() {
             try {
                 savedFavoriteFood = false
                 for(favorite in it){
-                    if(favorite.username == userName){
+                    if(favorite.username == viewModel.userName){
                         for (savedFood in it) {
                             if (savedFood.food.foodId == navArgs.food.foodId) {
                                 changeColorFavoriteIcon(binding.ivDetailFavorite,R.color.red)
@@ -127,7 +123,7 @@ class DetailFragment : Fragment() {
         })
     }
     private fun saveToFavorite() {
-        val favorite = Favorite(0, navArgs.food,userName)
+        val favorite = Favorite(0, navArgs.food,viewModel.userName)
         favoriteViewModel.insertFavoriteFood(favorite)
         binding.ivDetailFavorite.visibility = View.GONE
         binding.lottieFavorite.visibility = View.VISIBLE
@@ -144,7 +140,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun removeFromFavorites() {
-        val favorite = Favorite(savedFavoriteFoodId,navArgs.food,userName)
+        val favorite = Favorite(savedFavoriteFoodId,navArgs.food,viewModel.userName)
         favoriteViewModel.deleteFavoriteFood(favorite)
         changeColorFavoriteIcon(binding.ivDetailFavorite,R.color.mediumGray)
         showSnackBar(requireView(),R.string.favorilerden_silindi)

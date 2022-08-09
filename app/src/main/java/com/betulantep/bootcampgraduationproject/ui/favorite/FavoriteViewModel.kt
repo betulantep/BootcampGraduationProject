@@ -14,8 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteViewModel @Inject constructor(var foodRepo: FoodRepository): ViewModel() {
+class FavoriteViewModel @Inject constructor(var foodRepo: FoodRepository,var basketRepo: BasketRepository): ViewModel() {
     var readFavoriteFood: LiveData<List<Favorite>> = foodRepo.readFavoriteFood().asLiveData()
+    var userName = basketRepo.username
 
     fun insertFavoriteFood(favorite: Favorite) =
         viewModelScope.launch(Dispatchers.IO) {

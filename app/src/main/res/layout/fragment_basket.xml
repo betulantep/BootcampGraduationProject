@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-
         <variable
             name="basketAdapter"
             type="com.betulantep.bootcampgraduationproject.ui.adapter.BasketAdapter" />

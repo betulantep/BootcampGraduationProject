@@ -14,18 +14,6 @@ class AppPref @Inject constructor(var context: Context) {
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore("information")
     companion object {
         val KEY_SHOULD_SHOW_ON_BOARDING = booleanPreferencesKey("SHOULD_SHOW_ON_BOARDING")
-        val USERNAME = stringPreferencesKey("USERNAME")
-    }
-
-    suspend fun putUsername(username: String) {
-        context.dataStore.edit {
-            it[USERNAME] = username
-        }
-    }
-
-    suspend fun getUsername(): String {
-        val p = context.dataStore.data.first()
-        return p[USERNAME] ?: "betul@gmail.com"
     }
     suspend fun putOnBoardingShow(show: Boolean) {
         context.dataStore.edit {
