@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,19 +22,24 @@ import kotlinx.coroutines.launch
 class BasketFragment : Fragment() {
     private lateinit var binding: FragmentBasketBinding
     private lateinit var viewModel: BasketViewModel
-    private lateinit var userName: String
-    var subTotal = 0
-    var total = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_basket, container, false)
-        userName = viewModel.username
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+        binding.basketFragment = this
+
         binding.topAppBarBasket.setNavigationOnClickListener {
             Navigation.actionFragment(it, BasketFragmentDirections.actionBasketFragmentToHomeFragment())
         }
+        observe()
+        return binding.root
+    }
+
+    private fun observe(){
         viewModel.basketFoodList.observe(viewLifecycleOwner){
             if(it.isNullOrEmpty()){
                 binding.basketAdapter = BasketAdapter(arrayListOf(),viewModel)
@@ -42,11 +48,9 @@ class BasketFragment : Fragment() {
                 binding.lottieEmptyBasket.visibility = View.GONE
             }
         }
-        viewModel.viewModelSubTotal.observe(viewLifecycleOwner){
-            binding.tvBasketFoodTotal.text = "₺$it"
-        }
+    }
 
-        binding.btnBasketConfirm.setOnClickListener {
+    fun clickedBasketConfirm(){
             binding.rvBasketFragment.visibility = View.GONE
             binding.lottieAwait.visibility = View.VISIBLE
             repeat(3){
@@ -64,15 +68,11 @@ class BasketFragment : Fragment() {
             val list = viewModel.basketFoodList.value
             if (list != null) {
                 for (basket in list){
-                    viewModel.deleteFood(basket.basket_food_id,userName)
+                    viewModel.deleteFood(basket.basket_food_id,viewModel.username)
                 }
             }
-            binding.tvBasketFoodTotal.text = "₺0"
-        }
-
-        return binding.root
+            viewModel.viewModelTotal.value = 0
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel : BasketViewModel by viewModels()

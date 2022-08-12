@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.betulantep.bootcampgraduationproject.R
+import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
 import com.betulantep.bootcampgraduationproject.utils.RecyclerItemDecoration
@@ -55,6 +56,14 @@ class HomeFragment : Fragment() {
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                         viewModel.searchFood(p0.toString())
+                        /*var list = viewModel.foodsList.value
+                        var newList = ArrayList<Food>()
+                        list!!.forEach {
+                            if(it.foodName.contains(p0.toString())){
+                                newList.add(it)
+                            }
+                            binding.foodAdapter = FoodAdapter(newList)
+                        }*/
                     }
                     override fun afterTextChanged(p0: Editable?) {}
                 })

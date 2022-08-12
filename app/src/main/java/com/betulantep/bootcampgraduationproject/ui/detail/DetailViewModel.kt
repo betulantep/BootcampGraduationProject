@@ -18,6 +18,10 @@ class DetailViewModel @Inject constructor(var basketRepo: BasketRepository) : Vi
         basketFoodList = basketRepo.getBasketFood()
     }
 
+    fun processSubTotal(quantity:Int,price:Int):Int{
+        return basketRepo.processSubTotal(quantity,price)
+    }
+
     fun loadAllFoodBasket() {
         basketRepo.getFoodQuantity()
 

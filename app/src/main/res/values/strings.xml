@@ -28,4 +28,9 @@
     <string name="anasayfa">Anasayfa</string>
     <string name="kullanici">Kullanıcı</string>
     <string name="hatali_giris">Hatalı Giriş</string>
+    <string name="gonderim_ucreti">Gönderim Ücreti</string>
+    <string name="toplam">Toplam:</string>
+    <string name="sepetim">Sepetim</string>
+    <string name="sepeti_onayla">Sepeti Onayla</string>
+    <string name="ucretsiz_teslimat">Ücretsiz Teslimat</string>
 </resources>

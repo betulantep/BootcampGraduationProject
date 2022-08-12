@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="quantity"
+            type="String" />
+        <variable
+            name="subTotal"
+            type="String" />
 
         <variable
             name="viewModel"
@@ -84,7 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins"
-            android:text="₺0"
+            tools:text="₺0"
+            android:text="@{`₺`+ subTotal}"
             android:textAlignment="center"
             android:textColor="@color/black_100"
             android:textSize="24sp"
@@ -134,7 +141,7 @@
             android:id="@+id/chip5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ücretsiz Teslimat"
+            android:text="@string/ucretsiz_teslimat"
             app:layout_constraintBottom_toBottomOf="@+id/chip4"
             app:layout_constraintEnd_toStartOf="@+id/chip6"
             app:layout_constraintHorizontal_bias="0.5"
@@ -182,7 +189,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_extrabold"
                 android:gravity="center"
-                android:text="0"
+                tools:text="0"
+                android:text="@{quantity}"
                 android:textAlignment="center"
                 android:textColor="@color/text_blue_dark"
                 android:textSize="30sp" />
@@ -203,6 +211,7 @@
 
         <ImageView
             android:id="@+id/ivDetailFavorite"
+            android:onClick="@{()->detailFragment.clickedFavorite()}"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"

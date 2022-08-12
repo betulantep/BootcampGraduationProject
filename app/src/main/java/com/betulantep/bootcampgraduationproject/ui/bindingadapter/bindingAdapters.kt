@@ -4,8 +4,12 @@ import android.util.Patterns
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.navigation.Navigation
 import coil.load
 import com.betulantep.bootcampgraduationproject.R
+import com.betulantep.bootcampgraduationproject.ui.basket.BasketFragmentDirections
+import com.betulantep.bootcampgraduationproject.utils.actionFragment
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("app:load_image")

@@ -5,6 +5,12 @@
 
     <data>
         <variable
+            name="basketFragment"
+            type="com.betulantep.bootcampgraduationproject.ui.basket.BasketFragment" />
+        <variable
+            name="viewModel"
+            type="com.betulantep.bootcampgraduationproject.ui.basket.BasketViewModel" />
+        <variable
             name="basketAdapter"
             type="com.betulantep.bootcampgraduationproject.ui.adapter.BasketAdapter" />
     </data>
@@ -71,7 +77,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_close"
             app:navigationIconTint="@color/text_blue_dark"
-            app:title="Sepetim"
+            app:title="@string/sepetim"
             app:titleCentered="true"
             app:titleTextColor="@color/text_blue_dark" />
 
@@ -92,13 +98,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnBasketConfirm"
+            android:onClick="@{()-> basketFragment.clickedBasketConfirm()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_button_sign"
-            android:text="Sepeti Onayla"
+            android:text="@string/sepeti_onayla"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -110,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="Toplam:"
+            android:text="@string/toplam"
             android:textColor="@color/black_100"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/btnBasketConfirm"
@@ -121,7 +128,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="₺ 0"
+            android:text="@{`₺` + String.valueOf(viewModel.viewModelTotal)}"
+            tools:text="₺0"
             android:textAlignment="textEnd"
             android:textColor="@color/black_100"
             android:textSize="24sp"
@@ -136,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Gönderim Ücreti"
+            android:text="@string/gonderim_ucreti"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/textView2" />
 
@@ -145,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="₺ 0"
+            android:text="₺0"
             app:layout_constraintBottom_toTopOf="@+id/tvBasketFoodTotal"
             app:layout_constraintEnd_toEndOf="@+id/tvBasketFoodTotal" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,98 +32,102 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
-    private lateinit var binding : FragmentDetailBinding
-    private lateinit var navArgs: DetailFragmentArgs
+    private lateinit var binding: FragmentDetailBinding
+    private val navArgs: DetailFragmentArgs by navArgs()
     private lateinit var viewModel: DetailViewModel
-    val favoriteViewModel : FavoriteViewModel by viewModels()
+    val favoriteViewModel: FavoriteViewModel by viewModels()
 
     var savedFavoriteFood = false
     var savedFavoriteFoodId = 0
 
     var quantity = 0
-    var subTotal = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
-        binding.topAppBar.setNavigationOnClickListener {
-            Navigation.actionFragment(it,DetailFragmentDirections.actionDetailFragmentToHomeFragment())
-        }
-        val bundle : DetailFragmentArgs by navArgs()
-        navArgs = bundle
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.food = navArgs.food
         binding.viewModel = viewModel
         binding.detailFragment = this
+        binding.quantity = "0"
+        binding.subTotal = "0"
 
-        viewModel.basketFoodList.observe(viewLifecycleOwner){
-            for (basket in it){
-                if(basket.basket_food_name == navArgs.food.foodName){
-                    binding.tvDetailQuantity.text = basket.basket_order_quantity.toString()
-                    subTotal = basket.basket_food_price * basket.basket_order_quantity
-                    binding.tvDetailSubTotal.text = "₺$subTotal"
-                }
-            }
+        binding.topAppBar.setNavigationOnClickListener {
+            Navigation.actionFragment(it, DetailFragmentDirections.actionDetailFragmentToHomeFragment())
         }
-        checkSavedRecipes()
 
-        binding.ivDetailFavorite.setOnClickListener {
-            if(!savedFavoriteFood){
-                saveToFavorite()
-            }else{
-                removeFromFavorites()
-            }
-        }
+        observe()
+        checkSavedFoods()
+
+
         return binding.root
     }
 
-    fun clickedAddToCart(food: Food,quantity: Int){
-        viewModel.clickedAddToCart(food,quantity)
-        showSnackBar(requireView(),R.string.urun_sepete_eklendi)
+    private fun observe(){
+        viewModel.basketFoodList.observe(viewLifecycleOwner) {
+            for (basket in it) {
+                if (basket.basket_food_name == navArgs.food.foodName) {
+                    quantityAndSubTotal(basket.basket_order_quantity,basket.basket_food_price)
+                }
+            }
+        }
     }
-    fun clickedAdd(){
+
+    private fun quantityAndSubTotal(quantity: Int,price:Int){
+        binding.quantity = quantity.toString()
+        binding.subTotal = "${viewModel.processSubTotal(quantity,price)}"
+    }
+
+    fun clickedFavorite() {
+        if (!savedFavoriteFood) {
+            saveToFavorite()
+        } else {
+            removeFromFavorites()
+        }
+    }
+
+    fun clickedAddToCart(food: Food, quantity: Int) {
+        viewModel.clickedAddToCart(food, quantity)
+        showSnackBar(requireView(), R.string.urun_sepete_eklendi)
+    }
+
+    fun clickedAdd() {
         quantity = binding.tvDetailQuantity.text.toString().toInt()
         quantity++
-        subTotal = quantity * navArgs.food.foodPrice
-        binding.tvDetailSubTotal.text = "₺$subTotal"
-        binding.tvDetailQuantity.text = quantity.toString()
-
+        quantityAndSubTotal(quantity,navArgs.food.foodPrice)
     }
-    fun clickedDelete(){
+
+    fun clickedDelete() {
         quantity = binding.tvDetailQuantity.text.toString().toInt()
-        if(quantity!=0){
+        if (quantity != 0) {
             quantity--
-            subTotal = quantity * navArgs.food.foodPrice
-            binding.tvDetailSubTotal.text = "₺$subTotal"
-            binding.tvDetailQuantity.text = quantity.toString()
+            quantityAndSubTotal(quantity,navArgs.food.foodPrice)
         }
     }
 
     //Favorite
-    private fun checkSavedRecipes() {
+    private fun checkSavedFoods() {
         favoriteViewModel.readFavoriteFood.observe(viewLifecycleOwner, Observer {
             try {
                 savedFavoriteFood = false
-                for(favorite in it){
-                    if(favorite.username == viewModel.userName){
-                        for (savedFood in it) {
-                            if (savedFood.food.foodId == navArgs.food.foodId) {
-                                changeColorFavoriteIcon(binding.ivDetailFavorite,R.color.red)
-                                savedFavoriteFoodId = savedFood.id
-                                savedFavoriteFood = true
-                                break
-                            }
-                            changeColorFavoriteIcon(binding.ivDetailFavorite,R.color.mediumGray)
-                        }
+                for (favorite in it) {
+                    if (favorite.username == viewModel.userName && favorite.food.foodId == navArgs.food.foodId) {
+                        changeColorFavoriteIcon(binding.ivDetailFavorite, R.color.red)
+                        savedFavoriteFoodId = favorite.id
+                        savedFavoriteFood = true
+                        break
+                    }else{
+                        changeColorFavoriteIcon(binding.ivDetailFavorite, R.color.mediumGray)
+                    }
                 }
-                            }
             } catch (e: Exception) {
                 Log.d("DetailsFragment", e.message.toString())
             }
         })
     }
+
     private fun saveToFavorite() {
-        val favorite = Favorite(0, navArgs.food,viewModel.userName)
+        val favorite = Favorite(0, navArgs.food, viewModel.userName)
         favoriteViewModel.insertFavoriteFood(favorite)
         binding.ivDetailFavorite.visibility = View.GONE
         binding.lottieFavorite.visibility = View.VISIBLE
@@ -132,29 +136,32 @@ class DetailFragment : Fragment() {
             delay(2000)
             binding.lottieFavorite.visibility = View.GONE
             binding.ivDetailFavorite.visibility = View.VISIBLE
-            changeColorFavoriteIcon(binding.ivDetailFavorite,R.color.red)
+            changeColorFavoriteIcon(binding.ivDetailFavorite, R.color.red)
         }
 
-        showSnackBar(requireView(),R.string.favorilere_eklendi)
+        showSnackBar(requireView(), R.string.favorilere_eklendi)
         savedFavoriteFood = true
     }
 
     private fun removeFromFavorites() {
-        val favorite = Favorite(savedFavoriteFoodId,navArgs.food,viewModel.userName)
+        val favorite = Favorite(savedFavoriteFoodId, navArgs.food, viewModel.userName)
         favoriteViewModel.deleteFavoriteFood(favorite)
-        changeColorFavoriteIcon(binding.ivDetailFavorite,R.color.mediumGray)
-        showSnackBar(requireView(),R.string.favorilerden_silindi)
+        changeColorFavoriteIcon(binding.ivDetailFavorite, R.color.mediumGray)
+        showSnackBar(requireView(), R.string.favorilerden_silindi)
         savedFavoriteFood = false
     }
     //Favorite
 
-    private fun changeColorFavoriteIcon(imageView: ImageView,color:Int){
-        DrawableCompat.setTint(imageView.getDrawable(), ContextCompat.getColor(requireContext(),color));
+    private fun changeColorFavoriteIcon(imageView: ImageView, color: Int) {
+        DrawableCompat.setTint(
+            imageView.getDrawable(),
+            ContextCompat.getColor(requireContext(), color)
+        );
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel : DetailViewModel by viewModels()
+        val tempViewModel: DetailViewModel by viewModels()
         viewModel = tempViewModel
     }
 

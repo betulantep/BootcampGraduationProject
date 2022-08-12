@@ -30,6 +30,10 @@ class BasketRepository @Inject constructor(var foodDao: FoodDao) {
         username = auth.currentUser!!.email.toString()
     }
 
+    fun processSubTotal(quantity:Int,price:Int) : Int{
+        return (quantity * price)
+    }
+
     fun getBasketFood(): MutableLiveData<List<Basket>> {
         return basketFoodList
     }
