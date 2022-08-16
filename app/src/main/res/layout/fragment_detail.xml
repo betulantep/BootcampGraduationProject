@@ -75,7 +75,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_button_detail_cart"
             android:fontFamily="@font/poppins"
-            android:onClick="@{()->detailFragment.clickedAddToCart(food,Integer.parseInt(tvDetailQuantity.getText().toString()))}"
+            android:onClick="@{()->detailFragment.clickedAddToCart(btnDetailAddToCart,food,Integer.parseInt(tvDetailQuantity.getText().toString()))}"
             android:text="@string/sepete_ekle"
             android:textAllCaps="false"
             android:textColor="@color/white"

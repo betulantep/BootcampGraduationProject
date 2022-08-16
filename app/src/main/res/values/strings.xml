@@ -33,4 +33,5 @@
     <string name="sepetim">Sepetim</string>
     <string name="sepeti_onayla">Sepeti Onayla</string>
     <string name="ucretsiz_teslimat">Ücretsiz Teslimat</string>
+    <string name="lutfen_urun_adeti_seçiniz">Lütfen ürün adeti seçiniz</string>
 </resources>

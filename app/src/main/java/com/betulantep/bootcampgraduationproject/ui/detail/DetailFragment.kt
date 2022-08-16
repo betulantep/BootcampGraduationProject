@@ -86,9 +86,8 @@ class DetailFragment : Fragment() {
         }
     }
 
-    fun clickedAddToCart(food: Food, quantity: Int) {
-        viewModel.clickedAddToCart(food, quantity)
-        showSnackBar(requireView(), R.string.urun_sepete_eklendi)
+    fun clickedAddToCart(view: View,food: Food, quantity: Int) {
+        viewModel.clickedAddToCart(view, food, quantity)
     }
 
     fun clickedAdd() {

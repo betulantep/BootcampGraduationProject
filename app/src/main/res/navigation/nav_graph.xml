@@ -11,14 +11,9 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_userFragment"
-            app:destination="@id/userFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_basketFragment"
-            app:destination="@id/basketFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -110,7 +105,7 @@
         <action
             android:id="@+id/action_userFragment_to_signInFragment"
             app:destination="@id/signInFragment"
-            app:popUpTo="@id/userFragment"
+            app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
