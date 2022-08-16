@@ -5,6 +5,9 @@
 
     <data>
        <variable
+           name="favorite"
+           type="Boolean" />
+        <variable
             name="food"
             type="com.betulantep.bootcampgraduationproject.data.entity.Food" />
     </data>
@@ -113,14 +116,15 @@
                     app:srcCompat="@drawable/ic_baseline_add_box_24" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/ivFavoriteImage"
+                    app:favorite_food="@{favorite}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_favorite" />
+                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

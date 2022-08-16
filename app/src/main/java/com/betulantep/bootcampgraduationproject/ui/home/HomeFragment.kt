@@ -10,9 +10,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.betulantep.bootcampgraduationproject.R
+import com.betulantep.bootcampgraduationproject.data.entity.Favorite
 import com.betulantep.bootcampgraduationproject.data.entity.Food
 import com.betulantep.bootcampgraduationproject.databinding.FragmentHomeBinding
 import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
+import com.betulantep.bootcampgraduationproject.ui.favorite.FavoriteViewModel
 import com.betulantep.bootcampgraduationproject.utils.RecyclerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    private var favoriteList : List<Favorite> = emptyList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,8 +40,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeLiveData(){
+        favoriteViewModel.readFavoriteFood.observe(viewLifecycleOwner){
+            favoriteList = it
+        }
         viewModel.foodsList.observe(viewLifecycleOwner){
-            val adapter = FoodAdapter(it)
+            val adapter = FoodAdapter(it,favoriteList)
             binding.foodAdapter = adapter
         }
         viewModel.foodLoading.observe(viewLifecycleOwner){
