@@ -17,6 +17,7 @@ import com.betulantep.bootcampgraduationproject.ui.adapter.FoodAdapter
 import com.betulantep.bootcampgraduationproject.ui.favorite.FavoriteViewModel
 import com.betulantep.bootcampgraduationproject.utils.RecyclerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.ArrayList
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -44,7 +45,7 @@ class HomeFragment : Fragment() {
             favoriteList = it
         }
         viewModel.foodsList.observe(viewLifecycleOwner){
-            val adapter = FoodAdapter(it,favoriteList)
+            val adapter = FoodAdapter(it,favoriteList,favoriteViewModel)
             binding.foodAdapter = adapter
         }
         viewModel.foodLoading.observe(viewLifecycleOwner){

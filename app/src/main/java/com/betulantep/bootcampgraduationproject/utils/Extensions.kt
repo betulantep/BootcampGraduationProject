@@ -8,10 +8,13 @@ import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -46,5 +49,9 @@ fun showSnackBar(view: View, @StringRes message: Int){
 
 fun showToast(context: Context, @StringRes message: Int){
     Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+}
+
+fun changeColorFavorite(imageView: ImageView, @ColorRes color: Int){
+    imageView.setColorFilter(ContextCompat.getColor(imageView.context, color))
 }
 

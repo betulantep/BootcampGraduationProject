@@ -27,8 +27,11 @@ class FoodRowBinding {
                 imageView.setColorFilter(
                     ContextCompat.getColor(imageView.context, R.color.red)
                 )
+            }else{
+                imageView.setColorFilter(
+                    ContextCompat.getColor(imageView.context, R.color.mediumGray)
+                )
             }
-
         }
     }
 }
