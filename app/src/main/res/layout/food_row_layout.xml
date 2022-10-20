@@ -5,7 +5,7 @@
 
     <data>
        <variable
-           name="favorite"
+           name="favoriteBoolean"
            type="Boolean" />
         <variable
             name="food"
@@ -117,7 +117,7 @@
 
                 <ImageView
                     android:id="@+id/ivFavoriteImage"
-                    app:favorite_food="@{favorite}"
+                    app:favorite_icon_color="@{favoriteBoolean}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

@@ -54,9 +54,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
 
-    //viewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.3.0"
-    implementation "androidx.activity:activity-ktx:1.2.0"
+    // lifecycle and coroutines
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation "androidx.activity:activity-ktx:1.5.1"
 
     //dagger hilt
     implementation "com.google.dagger:hilt-android:2.42"
@@ -73,10 +76,6 @@ dependencies {
 
     //Preferences DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-    // Lifecycle component & Kotlin coroutines components
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
 
     // Room components
     implementation "androidx.room:room-runtime:2.4.2"

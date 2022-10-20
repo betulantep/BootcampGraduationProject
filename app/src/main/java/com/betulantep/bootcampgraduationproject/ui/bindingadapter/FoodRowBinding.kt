@@ -21,16 +21,11 @@ class FoodRowBinding {
         }
 
         @JvmStatic
-        @BindingAdapter("app:favorite_food")
-        fun foodFavorite(imageView: ImageView, favorite: Boolean){
-            if(favorite){
-                imageView.setColorFilter(
-                    ContextCompat.getColor(imageView.context, R.color.red)
-                )
-            }else{
-                imageView.setColorFilter(
-                    ContextCompat.getColor(imageView.context, R.color.mediumGray)
-                )
+        @BindingAdapter("app:favorite_icon_color")
+        fun favoriteIconColor(imageView: ImageView, isFavorite: Boolean){
+            when(isFavorite){
+                true -> imageView.setColorFilter(ContextCompat.getColor(imageView.context, R.color.red))
+                false -> imageView.setColorFilter(ContextCompat.getColor(imageView.context, R.color.mediumGray))
             }
         }
     }

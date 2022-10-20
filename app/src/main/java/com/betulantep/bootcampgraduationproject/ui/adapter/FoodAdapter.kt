@@ -1,12 +1,7 @@
 package com.betulantep.bootcampgraduationproject.ui.adapter
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +19,7 @@ class FoodAdapter(var foodList: List<Food>,var favoriteList: List<Favorite>,var 
     class FoodViewHolder(var binding: FoodRowLayoutBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(food: Food){
             binding.food = food
-            binding.favorite = false // home da gözükmesini düzeltti
+            binding.favoriteBoolean = false // home da gözükmesini düzeltti
         }
     }
 
@@ -37,20 +32,21 @@ class FoodAdapter(var foodList: List<Food>,var favoriteList: List<Favorite>,var 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) = with(holder) {
         val food = foodList[position]
         bind(food)
-        favoriteList.forEach { favorite->
-            if(favorite.food.foodId == food.foodId){
-                binding.favorite = true
-                currentFavorite = favorite
-            }
-        }
+        var isFavorite = checkFavorite(food)
+        binding.favoriteBoolean = isFavorite
+
         binding.ivFavoriteImage.setOnClickListener {
-                if(currentFavorite?.food?.foodId == food.foodId){
+            when(isFavorite) {
+                true -> {
                     favoriteViewModel.deleteFavoriteFood(currentFavorite!!)
-                    changeColorFavorite(binding.ivFavoriteImage,R.color.mediumGray)
-                }else{
-                    favoriteViewModel.insertFavoriteFood(Favorite(0,food,favoriteViewModel.userName))
-                    changeColorFavorite(binding.ivFavoriteImage,R.color.red)
+                    binding.ivFavoriteImage.changeColorFavorite(R.color.mediumGray)
                 }
+                false -> {
+                    favoriteViewModel.insertFavoriteFood(Favorite(0, food, favoriteViewModel.userName))
+                    binding.ivFavoriteImage.changeColorFavorite(R.color.red)
+                }
+            }
+            isFavorite = !isFavorite
         }
 
         binding.cardviewFoodHome.setOnClickListener {
@@ -60,7 +56,15 @@ class FoodAdapter(var foodList: List<Food>,var favoriteList: List<Favorite>,var 
 
     override fun getItemCount(): Int = foodList.size
 
-
+    private fun checkFavorite(food: Food): Boolean{
+        favoriteList.forEach { favorite->
+            if(favorite.food.foodId == food.foodId){
+                currentFavorite = favorite
+                return true
+            }
+        }
+        return false
+    }
 }
 
 interface ItemClickListener {
